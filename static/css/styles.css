@@ -127,6 +127,23 @@
 
 
 /* -- font -- */
+@font-face {
+    font-family: "Open Sans";
+    src: url("../fonts/opensans_regular.ttf");
+}
+
+@font-face {
+    font-family: "Open Sans";
+    src: url("../fonts/opensans_bold.ttf");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "Open Sans";
+    src: url("../fonts/opensans_italic.ttf");
+    font-style: italic;
+}
+
 html {
     font-family: "Open Sans", sans-serif;
     line-height: 1.5;
