@@ -128,7 +128,8 @@
 
 /* -- font -- */
 html {
-    font-family: "Lucida Sans Unicode", sans-serif;
+    font-family: "Open Sans", sans-serif;
+    line-height: 1.5;
 }
 
 /* -- links -- */
@@ -147,7 +148,8 @@ a:hover {
 
 /* -- text layout -- */
 .article {
-    font-family: "Lucida Sans Unicode", sans-serif;
+    font-family: "Open Sans", sans-serif;
+    line-height: 1.5;
 }
 
 /* -- table -- */
