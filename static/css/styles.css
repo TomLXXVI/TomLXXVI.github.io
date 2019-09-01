@@ -218,21 +218,6 @@ a.tag {
 
 /* -- CONTACT LAYOUT -- */
 
-.contact table, th, td {
-    padding: 8px;
-}
-
-.contact table {
-    border-collapse: collapse;
-    width: 100%;
-}
-
-.contact th {
-    font-size: 1.5em;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
 /* -- link -- */
 .contact a {
     text-decoration: none;
