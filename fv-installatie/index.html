@@ -9,28 +9,77 @@
     <script src="https://kit.fontawesome.com/49c5b2b09a.js"></script>
 </head>
 <body>
-    <div class="header">
-        <img src="/static/logo/logo.png" alt="logo" style="float: left;"><h1>Ingenieursbureau Christiaens</h1>
-    </div>
 
-    <div class="row">
+    <div class="wrapper">
 
-        <div class="col-3 col-s-3 menu">
-            <ul>
-                <li><a href="/index.html">Over ons en deze site</a></li>
-                <li><a href="/contact.html">Contacteer ons</a></li>
-                <li><a href="/articles.html">Leesartikelen</a></li>
-            </ul>
+        <div class="header">
+            <img src="/static/logo/logo.png" alt="logo" style="float: left;"><h1>Ingenieursbureau Christiaens</h1>
         </div>
 
-        <div class="col-6 col-s-9">
-            <!-- Add page content here -->
+        <div class="row">
+
+            <div class="column side">
+                <div class="nav">
+                    <ul>
+                        <li><a href="/index.html">Over ons en deze site</a></li>
+                        <li><a href="/contact.html">Contacteer ons</a></li>
+                        <li><a href="/articles.html">Leesartikelen</a></li>
+                    </ul>
+                </div>
+
+                <div class="aside">
+                    
+    
+        <div class="toc_layout">
+            <h2>Inhoudstafel</h2>
             
+<ul>
+<li><a href="#de-fotovoltaische-installatie-basisontwerp-en-energieanalyse">DE FOTOVOLTAÏSCHE INSTALLATIE: BASISONTWERP EN ENERGIEANALYSE</a><ul>
+<li><a href="#beschaduwingsanalyse">BESCHADUWINGSANALYSE</a></li>
+<li><a href="#basisontwerp-van-de-fotovoltaische-installatie">BASISONTWERP VAN DE FOTOVOLTAÏSCHE INSTALLATIE</a></li>
+<li><a href="#energieanalyse">ENERGIEANALYSE</a><ul>
+<li><a href="#geschatte-jaaropbrengst">Geschatte jaaropbrengst</a></li>
+<li><a href="#energiestromen">Energiestromen</a></li>
+<li><a href="#batterijopslagsysteem">Batterijopslagsysteem</a></li>
+</ul>
+</li>
+<li><a href="#financiele-analyse-impact-op-de-elektriciteitsfactuur">FINANCIËLE ANALYSE: IMPACT OP DE ELEKTRICITEITSFACTUUR</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+    
+
+                </div>
+
+            </div>
+
+            <div class="column middle">
+                <div class="main">
+                    <!-- Add page content here -->
+                    
     <div class="article">
-        <h1>DE FOTOVOLTAÏSCHE INSTALLATIE: BASISONTWERP EN ENERGIEANALYSE</h1>
+        <div class="toc">
+<ul>
+<li><a href="#de-fotovoltaische-installatie-basisontwerp-en-energieanalyse">DE FOTOVOLTAÏSCHE INSTALLATIE: BASISONTWERP EN ENERGIEANALYSE</a><ul>
+<li><a href="#beschaduwingsanalyse">BESCHADUWINGSANALYSE</a></li>
+<li><a href="#basisontwerp-van-de-fotovoltaische-installatie">BASISONTWERP VAN DE FOTOVOLTAÏSCHE INSTALLATIE</a></li>
+<li><a href="#energieanalyse">ENERGIEANALYSE</a><ul>
+<li><a href="#geschatte-jaaropbrengst">Geschatte jaaropbrengst</a></li>
+<li><a href="#energiestromen">Energiestromen</a></li>
+<li><a href="#batterijopslagsysteem">Batterijopslagsysteem</a></li>
+</ul>
+</li>
+<li><a href="#financiele-analyse-impact-op-de-elektriciteitsfactuur">FINANCIËLE ANALYSE: IMPACT OP DE ELEKTRICITEITSFACTUUR</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="de-fotovoltaische-installatie-basisontwerp-en-energieanalyse">DE FOTOVOLTAÏSCHE INSTALLATIE: BASISONTWERP EN ENERGIEANALYSE</h1>
 <p>In dit artikel zal het basisontwerp van een residentiële FV installatie worden behandeld. Vervolgens zal een prognose worden gemaakt van de energieopbrengst van deze FV installatie. Ook de zelfvoorziening en de zelfconsumptie van de FV installatie in combinatie met de verbruikersinstallatie zullen onder de loep worden genomen. Daarbij zal de vergelijking worden gemaakt tussen een installatie zonder batterijopslagsysteem en een installatie met batterijopslagsysteem. Tot slot zal voor de beide installaties gekeken worden naar de mogelijke impact op de elektriciteitsfactuur. </p>
 <p>Volgens <a href="https://apps.energiesparen.be/zonnekaart">Zonnekaart Vlaanderen</a> zou circa de helft van het dakoppervlak van mijn woning ideaal geschikt zijn om zonnepanelen op te plaatsen.  Nochtans, in zuidelijke richting tegenover mijn woning bevinden zich twee hoge appartementsgebouwen. Het platte dak van de achterbouw -volgens "Zonnekaart Vlaanderen" een ideaal oppervlak voor zonnepanelen- is ook lager gelegen dan het gedeelte vooraan de woning (met zadeldak), waarvan de voorgevel naar het zuiden is georiënteerd.</p>
-<p><img alt="locatie" src="../static/images/locatie.png" /></p>
+<p><img alt="locatie" src="../static/articles/fv-installatie/images/locatie.png" /></p>
 <p>Daarom wilde ik zelf eens nagaan welke zonneopbrengst er kan verwacht worden, alvorens ik zonnepanelen laat plaatsen op het platte dak van de achterbouw. Ik verkies het platte dak om twee redenen:</p>
 <ul>
 <li>om de afstand tussen de zonnepanelen en de omvormer, die in de garage kan geplaatst worden, zo kort mogelijk te houden, waardoor ingrepen aan de woning voor de aanleg van de bekabeling  tot een minimum kunnen beperkt blijven;</li>
@@ -40,7 +89,7 @@
 <p>Een FV installatie, en zowat alles wat daarbij komt kijken, ook de zon, is fysisch of kan op een abstracte manier worden voorgesteld als zijnde samengesteld uit 'objecten', die elk afzonderlijk in computercode kunnen worden gemodelleerd. Dit wordt het "object-georiënteerd paradigma" genoemd. Deze methode van computerprogrammeren laat ook heel wat creativiteit van de programmeur toe om de fysische wereld door middel van een computerprogramma te simuleren. Object-georiënteerd programmeren laat ook toe om het pad naar de oplossing van een langdradig, complex of iteratief vraagstuk overzichtelijk, in afgebakende eenheden of subsystemen op te splitsen, die met elkaar kunnen interageren om uiteindelijk de oplossingen aan de gebruiker te presenteren.</p>
 <p>De berekeningsmethoden heb ik geïmplementeerd met de programmeertaal <a href="https://www.python.org/">Python</a>. In een drietal <a href="https://jupyter.org/">Jupyter Notebooks</a> worden de computerberekeningen stap voor stap uitgevoerd en toegelicht. De complete broncode van het project kan men <a href="https://github.com/TomLXXVI/pypv">hier</a> terugvinden. </p>
 <p>Hierna volgt een algemene bespreking over de wijze waarop het basisontwerp en de energieanalyse stap voor stap worden uitgevoerd zonder evenwel diep op de achterliggende computercode in te gaan. In de tekst worden koppelingen naar de <em>Jupyter Notebooks</em> vermeld, waarin de berekeningen gedemonstreerd worden. Het is niet de bedoeling van dit artikel om elke wiskundige formule en elke regel in het computerprogramma van naaldje tot draadje te verklaren. In de eerste plaats is het de bedoeling om te illustreren hoe complexe of uitgebreide vraagstukken, waar de opbrengstprognoseberekening van een FV installatie een voorbeeld van is, met behulp van de computer op een boeiende manier bestudeerd kunnen worden.</p>
-<h2>1. BESCHADUWINGSANALYSE</h2>
+<h2 id="beschaduwingsanalyse">BESCHADUWINGSANALYSE</h2>
 <p>Wanneer men overweegt om zonnepanelen te installeren, is het alvast goed om weten hoeveel direct of rechtstreeks zonlicht in de loop van een jaar kan invallen op de voorziene locatie van de zonnepanelen. Reliëf, bebouwing, begroeiing of andere obstakels kunnen gedurende bepaalde periodes van het jaar of van de dag verhinderen dat direct zonlicht de zonnepanelen kan bereiken.</p>
 <p>Een (cartesiaans) <strong>zonnebaandiagram</strong> beschrijft de baan van de zon langs de sferische hemelkoepel op een welbepaalde locatie (aangeduid met de lengte- en breedtegraad) en op een welbepaalde dag van het jaar.</p>
 <p>De positie van de zon aan de hemelkoepel ten opzichte van een lokale waarnemer op de locatie in kwestie kan worden aangeduid met de azimut- en de elevatiehoek.</p>
@@ -53,22 +102,22 @@
 <p>Het horizonprofiel dat vanaf een welbepaalde locatie wordt waargenomen, moet opgemeten worden. Hieronder wordt een praktische methode voorgesteld.</p>
 <p>Er zijn diverse gesofisticeerde, dan wel prijzige meettoestellen en softwareprogramma's voor professionelen verkrijgbaar, waarmee het horizonprofiel nauwkeurig kan worden opgemeten en waarmee een gedetailleerde beschaduwingsanalyse kan worden gemaakt. Daarnaast bestaan er ook rudimentaire, goedkope hulpmiddelen, zoals een gradenboog (ook wel protractor genoemd). Omdat daarmee het meetwerk echter nogal omslachtig verloopt, ben ik op zoek gegaan naar een meer gebruiksvriendelijk en eigentijdser alternatief. Zo vond ik op <em>Google Play</em> de app <em>AngleCam</em>.</p>
 <p><em>AngleCam</em> is een camera-applicatie met in het midden op het beeldscherm een kruisvizier waarmee men naar een ruimtelijk punt kan richten.  Met behulp van ingebouwde sensoren in de smartphone bepaalt de app de azimut- en elevatiehoek van het punt waar de cameralens naar wordt gericht. Van elke foto slaat de app de hoeken in een <em>csv</em>-bestand op (<em>csv</em> is de afkorting van <em>comma separated value</em>). Daarmee kan een waarnemer, die zich op een welbepaalde locatie bevindt, zonder zelf meetwerk te hoeven verrichten eenvoudig de azimut- en elevatiehoek bepalen van "horizonpunten" welke de contour van het horizonprofiel begrenzen.</p>
-<p><img alt="horizonptn_veld1" src="../static/images/horizonptn_veld1.png" /></p>
+<p><img alt="horizonptn_veld1" src="../static/articles/fv-installatie/images/horizonptn_veld1.png" /></p>
 <p>Na input van de azimut- en elevatiehoeken van de horizonpunten in het computerprogramma, berekent de computer het horizonprofiel dat gezien wordt vanuit de beschouwde locatie. Vervolgens kan het computerprogramma het zonnebaandiagram tekenen waarop dan het horizonprofiel gesuperponeerd wordt.</p>
-<p><img alt="horizonprofiel_vooraan" src="../static/images/horizonprofiel_vooraan.png" /></p>
+<p><img alt="horizonprofiel_vooraan" src="../static/articles/fv-installatie/images/horizonprofiel_vooraan.png" /></p>
 <p>De afbeelding hierboven toont het horizonprofiel gezien vanop de voorste helft van het platte dak van de achterbouw van mijn woning.</p>
 <p>Nadat het horizonprofiel, dat altijd met een welbepaald referentie- of waarnemerspunt is verbonden van waaruit het wordt waargenomen, is berekend, kan het computerprogramma ook een ander horizonprofiel berekenen dat vanuit een ander referentiepunt zou worden waargenomen. Daartoe is het wel nodig dat ook de vlakke afstand wordt ingevoerd tussen het aanvankelijk referentiepunt, van waaruit de horizonpunten werden gefotografeerd, en deze horizonpunten. Deze afstanden kan men eenvoudig in <em>Google Maps</em> opmeten (klik met de rechtermuisknop op de kaart in <em>Google Maps</em> en selecteer <em>Afstand meten</em> in het popupmenu dat verschijnt).</p>
-<p>In <em>Jupyter Notebook</em> <a href="..\static\notebooks\01_zonnebaandiagram.html">DEEL 1 | ZONNEBAANDIAGRAM EN HORIZONPROFIELEN</a> wordt de computercode gedemonstreerd om de horizonprofielen te berekenen. Het computerprogramma zal de horizonprofielen verder in de energieanalyse gebruiken om de zonnebestralingssterkte te berekenen op de zonnepanelen. Op tijdstippen dat de zon achter een horizonprofiel is verscholen, zal het computerprogramma enkel het diffuus aandeel van het zonlicht in de berekeningen meenemen.</p>
-<h2>2. BASISONTWERP VAN DE FOTOVOLTAÏSCHE INSTALLATIE</h2>
+<p>In <em>Jupyter Notebook</em> <a href="..\static\articles\fv-installatie\notebooks\01_zonnebaandiagram.html">DEEL 1 | ZONNEBAANDIAGRAM EN HORIZONPROFIELEN</a> wordt de computercode gedemonstreerd om de horizonprofielen te berekenen. Het computerprogramma zal de horizonprofielen verder in de energieanalyse gebruiken om de zonnebestralingssterkte te berekenen op de zonnepanelen. Op tijdstippen dat de zon achter een horizonprofiel is verscholen, zal het computerprogramma enkel het diffuus aandeel van het zonlicht in de berekeningen meenemen.</p>
+<h2 id="basisontwerp-van-de-fotovoltaische-installatie">BASISONTWERP VAN DE FOTOVOLTAÏSCHE INSTALLATIE</h2>
 <p>Met behulp van het zonnebaandiagram en de horizonprofielen kan men inzicht verwerven over voor welke perioden van het jaar en/of van de dag men wel dan geen direct zonlicht op de zonnepanelen kan verwachten. </p>
 <p>Echter, daarmee is nog niet geweten welke opbrengst in kWh op jaarbasis kan verwacht worden van de zonnepanelen. Alvorens een opbrengstvoorspelling kan worden gedaan, moet eerst het basisontwerp van de FV installatie worden gemaakt.</p>
 <p>Dit houdt vooreerst in dat een layout van de plaatsing van zonnepanelen op het beschikbare dakoppervlak wordt gemaakt en dat de oriëntatie (azimuthoek) en de hellingshoek van de zonnepanelen wordt bepaald.</p>
 <p>De afbeelding hieronder toont een mogelijke layout.</p>
-<p><img alt="layout" src="../static/images/layout.png" /></p>
+<p><img alt="layout" src="../static/articles/fv-installatie/images/layout.png" /></p>
 <p>Voorts worden in het basisontwerp ook al een specifiek zonnepaneel en een specifieke omvormer geselecteerd en worden de solarkabels, die de zonnepanelenmatrices of -strengen verbinden met de FV omvormer, gedimensioneerd, m.n. de bepaling van de kabellengten en de vereiste dwarsdoorsnede of sectie van de kabels om het spanning- en vermogensverlies te beperken.</p>
 <p>Afhankelijk van de resultaten kan het basisontwerp nadien nog altijd worden gewijzigd. Dat is immers maar een kleine moeite als een computer alle berekeningen in een oogwenk opnieuw kan uitvoeren.</p>
 <p>Zonnepanelen, kabels en omvormer zullen samen het globale rendement van de FV installatie bepalen. Zonder dit rendement te kennen, kan er geen nauwkeurige schatting worden gemaakt van de "groene energie" die de omvormer zal afleveren. Noteer dat het rendement voortdurend zal variëren afhankelijk van de zonnebestralingssterkte of irradiantie (eenheid: W/m²) en van de buitentemperatuur.</p>
-<p>In <em>Jupyter Notebook</em> <a href="..\static\notebooks\02_basisontwerp.html">DEEL 2 | BASISONTWERP VAN DE FOTOVOLTAÏSCHE INSTALLATIE</a> wordt de computercode gedemonstreerd en toegelicht waarmee het basisontwerp van de FV installatie wordt gemaakt.</p>
+<p>In <em>Jupyter Notebook</em> <a href="..\static\articles\fv-installatie\notebooks\02_basisontwerp.html">DEEL 2 | BASISONTWERP VAN DE FOTOVOLTAÏSCHE INSTALLATIE</a> wordt de computercode gedemonstreerd en toegelicht waarmee het basisontwerp van de FV installatie wordt gemaakt.</p>
 <p>De computerroutines voor de bepaling van de (V,I)-karakteristieken van de FV matrix i.f.v. irradiantie en buitentemperatuur en voor het dimensioneren van de omvormer en de bekabeling steunen op het boek <em>Planning and Installing Photovoltaic Systems, 3Ed.</em> (Deutsche Gesellschaft für Sonnenenergie [DGS], 2013).</p>
 <p>Volgende stappen worden na elkaar in het basisontwerp van een FV installatie doorlopen:</p>
 <ol>
@@ -77,17 +126,17 @@
 <li>Eenmaal de FV matrix of matrices zijn gedefinieerd, kan het computerprogramma berekenen welke minimale sectie de strengkabels in een matrix moeten bezitten, opdat het spanningsverlies over de kabels niet meer dan 1% zou bedragen. Daartoe dient men eerst de kabellengten door te geven aan het computerprogramma . Op basis van de teruggegeven resultaten kan dan een standaard geleidersectie  worden geselecteerd die groter moet zijn dan de berekende minimale sectie.</li>
 <li>Eenmaal de FV matrix of matrices gedefinieerd zijn, kan men ook nagaan welk werkingsgebied de MPPT-ingangen van de omvormer moeten bezitten om ook onder waarschijnlijk voorkomende extreme combinaties van irradiantie en buitentemperatuur het MPP-vermogen vanuit de FV matrix naar AC-vermogen te kunnen omzetten. Het werkingsgebied van een MPPT-ingang wordt begrensd door de minimum MPP-spanningslimiet, de maximum DC-spanningslimiet, de DC-stroomlimiet en de DC-vermogenlimiet.</li>
 </ol>
-<p><img alt="required_working_range" src="../static/images/required_working_range.png" /></p>
+<p><img alt="required_working_range" src="../static/articles/fv-installatie/images/required_working_range.png" /></p>
 <ol>
 <li>Daarmee kan vervolgens een geschikte omvormer worden geselecteerd. De technische kenmerken vermeld in de datasheet van een kandidaat-omvormer worden daartoe in het computerprogramma  ingevoerd.  </li>
 </ol>
 <p>Belangrijk voor een nauwkeurige schatting van de zonneopbrengst zijn de rendementen van de omvormer onder deelbelasting (belastingen kleiner dan het nominaal vermogen van de omvormer) en onder variabele DC-ingangsspanning van de FV matrix (voornamelijk afhankelijk van de zonneceltemperatuur). Deze deellastrendementswaarden vindt men doorgaans terug in de datasheet of in de handleiding van de omvormer.</p>
-<p><img alt="omvormerrendement" src="../static/images/omvormerrendement.png" /></p>
+<p><img alt="omvormerrendement" src="../static/articles/fv-installatie/images/omvormerrendement.png" /></p>
 <blockquote>
 <p><strong>NOOT</strong><br>Wanneer de FV matrix of matrices zijn gedefinieerd, kan het computerprogramma voorts nagaan of er smeltzekeringen of DC-automaten zullen vereist zijn om zonnepanelen te beschermen tegen zgn. inverse stroom (<em>reverse current</em>). Een inverse stroom kan zich voordoen als meerdere strengen van zonnepanelen parallel met elkaar verbonden zijn om zo een matrix te vormen. Als er in één van de strengen een defect zou optreden (bv. een kortsluiting in een zonnepaneel), zodanig dat de spanning van deze streng beduidend zakt onder de spanning van de andere strengen in de matrix, dan zullen de 'goede strengen' een stroom in omgekeerde zin door de 'slechte streng' sturen. In extremis kan die inverse stroom gelijk zijn aan de som van de kortsluitstromen van de 'goede strengen'. Inverse stroom kan leiden tot een sterke opwarming van de zonnepanelen en bijgevolg tot schade aan zonnepanelen door oververhitting. Als de totale inverse stroom door een zonnepaneel groter kan worden dan de maximale inverse stroom die het zonnepaneel nog kan verdragen, is een overstroombeveiliging van de strengen vereist.</p>
 </blockquote>
-<h2>3. ENERGIEANALYSE</h2>
-<h3>Geschatte jaaropbrengst</h3>
+<h2 id="energieanalyse">ENERGIEANALYSE</h2>
+<h3 id="geschatte-jaaropbrengst">Geschatte jaaropbrengst</h3>
 <p>Wanneer de beschaduwingsanalyse en het basisontwerp achter de rug zijn en de layout en configuratie van de FV installatie vastliggen, kan in principe voor elk moment overdag (tussen zonsopgang en -ondergang) en dit over het ganse jaar worden berekend welk AC-vermogen de FV installatie (bij benadering) zal leveren bij een gegeven verloop van de zonnebestralingssterkte (irradiantie, W/m²) en de buitentemperatuur.</p>
 <p>Uiteraard moet men dan weten welke zonnebestralingssterkte en buitentemperatuur er in de loop van een dag kan verwacht worden op de gegeven locatie.</p>
 <p><a href="https://re.jrc.ec.europa.eu/pvgis.html">PVGIS 5</a> is een online, gratis te raadplegen meteorologische database onder beheer van de Europese Commissie. Onder meer kan men uit deze database voor een gegeven locatie de weerdata van een zgn. <a href="https://e3p.jrc.ec.europa.eu/articles/typical-meteorological-year-tmy">Typisch Meteorologisch Jaar</a> ophalen. Een 'Typisch Meteorologisch Jaar' (TMY) wordt statistisch samengesteld uit 12 maanden die geselecteerd worden uit 10 opeenvolgende jaren, dewelke een typisch beeld moeten weergeven van het klimaat of het weer van de voorbije 10 jaar. Het huidig meest recente TMY-databestand in PVGIS 5 heeft betrekking op de jaren 2007 t.e.m. 2016. Het TMY-databestand bevat voor elk uur van het jaar een dataset. In zo'n dataset vindt men ook de globale irradiantie op het horizontaal oppervlak en de buitentemperatuur terug. Daarmee kan voor elk uur van het 'Typisch Meteorologisch Jaar' worden berekend welk AC-vermogen de FV omvormer zal afleveren.</p>
@@ -115,7 +164,7 @@
 <p>Wanneer het AC-vermogen aan de uitgang van de omvormer voor elk uur van een dag is bepaald, berekent het computerprogramma voor elke dag van het jaar d.m.v. interpolatie een vermogencurve die vervolgens wordt geïntegreerd tussen zonsopgang en zonsondergang. Deze integratie levert de dagopbrengst op (de hoeveelheid geproduceerde wisselstroomenergie in kWh over één dag). De som van de verwachte dagopbrengsten in een volledig jaar resulteert finaal in de geschatte jaarlijkse opbrengst.</p>
 </li>
 </ol>
-<p>In <em>Jupyter Notebook</em> <a href="..\static\notebooks\03_energieanalyse.html">DEEL 3 | SCHATTING VAN DE ENERGIEOPBRENGST</a> wordt de computercode gedemonstreerd waarmee de verwachte jaarlijkse energieopbrengst wordt berekend van de FV installatie met de zonnepanelen-layout zoals hierboven getoond. Deze FV installatie bestaat uit:</p>
+<p>In <em>Jupyter Notebook</em> <a href="..\static\articles\fv-installatie\notebooks\03_energieanalyse.html">DEEL 3 | SCHATTING VAN DE ENERGIEOPBRENGST</a> wordt de computercode gedemonstreerd waarmee de verwachte jaarlijkse energieopbrengst wordt berekend van de FV installatie met de zonnepanelen-layout zoals hierboven getoond. Deze FV installatie bestaat uit:</p>
 <ul>
 <li>
 <p>Twee FV matrices van telkens 9 zonnepanelen <em>Sharp NU-RC300</em> in één streng. Beide matrices (strengen) bezitten een piekvermogen van ca. 2,7 kWp onder STC-condities (irradiantie 1000 W/m² en celtemperatuur 25 °C).</p>
@@ -128,8 +177,8 @@
 </li>
 </ul>
 <p>Het computerprogramma berekent dat de geschatte jaarlijkse opbrengst van deze FV installatie zal uitkomen op ca. 5767 kWh.</p>
-<h3>Energiestromen</h3>
-<p>Wanneer ook het verbruiksprofiel van de elektrische verbruikersinstallatie gekend is, kunnen  energieopbrengst en energieverbruik samen geanalyseerd worden. Dit wordt in <em>Jupyter Notebook</em> <a href="..\static\notebooks\03_energieanalyse.html">DEEL 3 | SCHATTING VAN DE ENERGIEOPBRENGST</a> gedemonstreerd.</p>
+<h3 id="energiestromen">Energiestromen</h3>
+<p>Wanneer ook het verbruiksprofiel van de elektrische verbruikersinstallatie gekend is, kunnen  energieopbrengst en energieverbruik samen geanalyseerd worden. Dit wordt in <em>Jupyter Notebook</em> <a href="..\static\articles\fv-installatie\notebooks\03_energieanalyse.html">DEEL 3 | SCHATTING VAN DE ENERGIEOPBRENGST</a> gedemonstreerd.</p>
 <p>Indien het verbruiksprofiel van de concrete elektrische installatie (nog) niet is gekend, kan men op een zgn. 'synthetisch lastprofiel' (SLP) terugvallen. Men kan synthetische last- of verbruiksprofielen terugvinden op de <a href="https://www.vreg.be/nl/verbruiksprofielen">website van de VREG</a>. Er bestaan verschillende verbruiksprofielen voor verschillende types van verbruikersinstallaties, zowel residentieel, als niet-residentieel. Deze verbruiksprofielen worden o.a. door energieleveranciers aangewend om het elektriciteitsverbruik van een installatie te schatten tussen datum van meteropname en datum van afrekening. Het zijn cijfertabellen die over een volledig jaar per kwartier het relatieve verbruik opgeven van een bepaald type verbruikersinstallatie. Door de relatieve verbruiken te vermenigvuldigen met het (gemeten of geraamde) jaarverbruik kan per kwartier van het jaar het 'kwartierverbruik' worden geraamd.</p>
 <p>Het is aanbevolen het concrete verbruiksprofiel te meten waar dit mogelijk is (bestaande elektrische installatie). Ingeschakelde verbruikers die een momentaan vermogen opnemen dat groter is dan het aansluitvermogen van de FV omvormer (bv. een elektrisch fornuis), zullen het vermogentekort van de omvormer aanvullen met elektrisch vermogen vanuit het net, niettegenstaande het dag- of mogelijk zelfs het uurverbruik door de FV installatie alleen zou kunnen geleverd worden. Dit is meteen ook de reden dat de tijdsresolutie van de verbruiksmetingen niet erg groot mag zijn, zoniet riskeert men de piekverbruiken niet te kunnen ontwaren en zodoende de hoeveelheid elektrische energie die door het net zal geleverd worden, te laag in te schatten. In de synthetische verbruiksprofielen op de website van de VREG is de tijdstap tussen twee opeenvolgende punten één kwartier.</p>
 <p>Ik heb het verbruik van mijn elektrische installatie gedurende een drietal weken gemeten met een power analyzer waarop het loginterval op 15 minuten werd ingesteld, teneinde 'kwartierverbruiken' te meten. De meetdata heb ik simpelweg geëxtrapoleerd naar een volledig jaar. Dit levert dan een jaarverbruik van 3774 kWh op. </p>
@@ -146,7 +195,7 @@
 </li>
 </ul>
 <p>De grafiek hieronder geeft per maand van het jaar de geschatte opbrengst (productie) van de zonnepanelen weer en ernaast de geschatte hoeveelheid opgenomen elektrische energie door de verbruikers.</p>
-<p><img alt="energiestromen_zonder_batterij" src="../static/images/energiestromen_zonder_batterij.png" /></p>
+<p><img alt="energiestromen_zonder_batterij" src="../static/articles/fv-installatie/images/energiestromen_zonder_batterij.png" /></p>
 <p>Productieoverschotten doen zich voor op momenten dat het eigenverbruik kleiner is dan de FV productie. Productieoverschotten worden in het openbare net geïnjecteerd (de lichtgroene balken in de grafiek). Op momenten dat het eigenverbruik groter is dan de productie, wordt het tekort aan elektriciteit uit het openbare net afgenomen (de rode balken in de grafiek).</p>
 <p><strong>Zelfvoorziening</strong> houdt in dat een elektrische installatie met zonnepanelen haar verbruik voedt met de elektrische energie die ze zelf produceert. Het <u>verbruik</u> van de elektrische installatie is hier het uitgangsgegeven. De <strong>zelfvoorzieningsgraad</strong> is de verhouding van het deel van het jaarlijks verbruik dat geleverd wordt door de eigen FV installatie op het totaal jaarlijks verbruik van de installatie of m.a.w. het percentage van het totaal jaarlijks verbruik dat door de eigen FV installatie kan gedekt worden.</p>
 <p>Met <strong>zelfconsumptie</strong> of <strong>eigenverbruik</strong> wordt het deel van de elektrische energie bedoeld dat door de FV installatie wordt geproduceerd en in de eigen elektrische installatie wordt verbruikt of benut. De rest van de geproduceerde energie die niet onmiddellijk zelf kan worden verbruikt, wordt in het openbaar elektriciteitsnet geïnjecteerd. Wanneer men spreekt over eigenverbruik is dus de <u>opbrengst</u> van de FV installatie het uitgangsgegeven. De <strong>benuttingsgraad</strong> is de verhouding van het deel van de geproduceerde energie dat jaarlijks door de eigen installatie wordt verbruikt op de totale energieproductie van de FV installatie of m.a.w. het percentage van de jaarlijkse opbrengst dat voor eigenverbruik wordt benut.</p>
@@ -163,11 +212,11 @@
 </li>
 </ul>
 <p>De zelfvoorzieningsgraad komt uit op ca. 39% en de benuttingsgraad op ca. 25%. De grafieken hieronder geven een maandelijks overzicht weer van de zelfvoorzienings- en de benuttingsgraad.</p>
-<p><img alt="zelfvoorziening_zonder_batterij" src="../static/images/zelfvoorziening_zonder_batterij.png" /></p>
-<p><img alt="zelfconsumptie_zonder_batterij" src="../static/images/zelfconsumptie_zonder_batterij.png" /></p>
-<h3>Batterijopslagsysteem</h3>
+<p><img alt="zelfvoorziening_zonder_batterij" src="../static/articles/fv-installatie/images/zelfvoorziening_zonder_batterij.png" /></p>
+<p><img alt="zelfconsumptie_zonder_batterij" src="../static/articles/fv-installatie/images/zelfconsumptie_zonder_batterij.png" /></p>
+<h3 id="batterijopslagsysteem">Batterijopslagsysteem</h3>
 <p>De zelfvoorziening- en benuttingsgraad zouden kunnen verbeterd worden door een opslagbatterij aan de elektrische installatie te koppelen. Eventueel productieoverschot overdag kan dan in de batterij worden opgeslagen en na zonsondergang worden de elektrische verbruikers vanuit de batterij gevoed en pas vanuit het net als de batterij leeg is. Derhalve zou de te voorziene batterijopslagcapaciteit kunnen geselecteerd worden op basis van het "nachttijdverbruik", d.w.z. het verbruik in een etmaal vóór zonsopgang en na zonsondergang. Het computerprogramma kan het dagelijks "nachttijdverbruik" analyseren. In casu wordt er bekomen dat het maximum dagelijks nachttijdverbruik op 9 kWh uitkomt, het minimum is 1 kWh en het gemiddeld nachttijdverbruik gedurende het jaar bedraagt rond 5 kWh.</p>
-<p>In <em>Jupyter Notebook</em>  <a href="..\static\notebooks\03_energieanalyse.html">DEEL 3 | SCHATTING VAN DE ENERGIEOPBRENGST</a> onder <em>Analyseresultaat 4: Energiestromen Met Batterijopslagsysteem</em> worden de energiestromen berekend in het geval de installatie zou uitgebreid worden met een opslagbatterij die over een bruikbare opslagcapaciteit van 5 kWh beschikt. Het computerprogramma berekent dat jaarlijks:</p>
+<p>In <em>Jupyter Notebook</em> <a href="..\static\articles\fv-installatie\notebooks\03_energieanalyse.html">DEEL 3 | SCHATTING VAN DE ENERGIEOPBRENGST</a> onder <em>Analyseresultaat 4: Energiestromen Met Batterijopslagsysteem</em> worden de energiestromen berekend in het geval de installatie zou uitgebreid worden met een opslagbatterij die over een bruikbare opslagcapaciteit van 5 kWh beschikt. Het computerprogramma berekent dat jaarlijks:</p>
 <ul>
 <li>
 <p>ca. 988 kWh van het verbruik door het openbare net zal geleverd worden,</p>
@@ -182,7 +231,7 @@
 <p>ca. 1277 kWh van de door de FV installatie geproduceerde elektrische energie in de batterij zal opgeslagen worden en op latere, uitgestelde tijdstippen aan de verbruikers zal worden geleverd.</p>
 </li>
 </ul>
-<p><img alt="energiestromen_met_batterij" src="../static/images/energiestromen_met_batterij.png" /></p>
+<p><img alt="energiestromen_met_batterij" src="../static/articles/fv-installatie/images/energiestromen_met_batterij.png" /></p>
 <p>In de tabel hieronder worden de resultaten van de analyse zonder en met opslagbatterij naast elkaar samengevat:</p>
 <table>
 <thead>
@@ -226,12 +275,12 @@
 </tbody>
 </table>
 <p>Men noteert dat de opslagbatterij van 5 kWh een spectaculair effect heeft op de graad van zelfvoorziening en zelfconsumptie. In de FV installatie zonder opslagbatterij wordt maar bijna 39% van het jaarlijks verbruik geleverd door de zonnepanelen; met de opslagbatterij loopt dit op tot bijna 74%. In de installatie zonder opslagbatterij wordt slechts 25% van de fotovoltaïsch geproduceerde elektrische energie door de eigen verbruikersinstallatie geconsumeerd; met de opslagbatterij wordt het eigenverbruik opgevoerd tot 47%. Noteer in het geval van het batterijopslagsysteem dat met nog maar 47% van de jaarlijkse opbrengst al bijna 74% van het jaarlijks verbruik wordt gedekt. Dit betekent dat er nog behoorlijk wat opbrengst in het net zal verdwijnen, wat ook blijkt uit de absolute energiewaarden: van de jaarlijkse opbrengst à 5767 kWh wordt zowat 3042 kWh in het net geïnjecteerd of zowat 53%. Er is dus nog ruimte voor extra verbruikers (bv. voor een koelinstallatie in de zomer, want het is dan dat de netinjectie het grootst zal zijn.) </p>
-<p><img alt="zelfvoorziening_met_batterij" src="../static/images/zelfvoorziening_met_batterij.png" /></p>
-<p><img alt="zelfconsumptie_met_batterij" src="../static/images/zelfconsumptie_met_batterij.png" /></p>
-<p>De gedachte "hoe groter de batterijopslagcapaciteit, hoe groter de graad van zelfvoorziening en benutting van  zal zijn" dient genuanceerd te worden. In <em>Jupyter Notebook</em>  <a href="..\static\notebooks\03_energieanalyse.html">DEEL 3 | SCHATTING VAN DE ENERGIEOPBRENGST</a> onder <em>Analyseresultaat 5: Zelfvoorziening en Zelfconsumptie Met Batterijopslagsysteem</em> is aan het computerprogramma gevraagd om de zelfvoorzieningsgraad te analyseren in functie van de batterijopslagcapaciteit:</p>
-<p><img alt="zelfvoorziening_vs_batterijcapaciteit" src="../static/images/zelfvoorziening_vs_batterijcapaciteit.png" /></p>
+<p><img alt="zelfvoorziening_met_batterij" src="../static/articles/fv-installatie/images/zelfvoorziening_met_batterij.png" /></p>
+<p><img alt="zelfconsumptie_met_batterij" src="../static/articles/fv-installatie/images/zelfconsumptie_met_batterij.png" /></p>
+<p>De gedachte "hoe groter de batterijopslagcapaciteit, hoe groter de graad van zelfvoorziening en benutting van  zal zijn" dient genuanceerd te worden. In <em>Jupyter Notebook</em>  <a href="..\static\articles\fv-installatie\notebooks\03_energieanalyse.html">DEEL 3 | SCHATTING VAN DE ENERGIEOPBRENGST</a> onder <em>Analyseresultaat 5: Zelfvoorziening en Zelfconsumptie Met Batterijopslagsysteem</em> is aan het computerprogramma gevraagd om de zelfvoorzieningsgraad te analyseren in functie van de batterijopslagcapaciteit:</p>
+<p><img alt="zelfvoorziening_vs_batterijcapaciteit" src="../static/articles/fv-installatie/images/zelfvoorziening_vs_batterijcapaciteit.png" /></p>
 <p>Men constateert dat de graad van zelfvoorziening aanvankelijk steil toeneemt met de opslagcapaciteit van de batterij, maar vanaf een opslagcapaciteit van ongeveer 5 kWh begint de toename al zeer snel af te nemen. Het is dan ook niet zinvol te opteren voor een opslagcapaciteit die veel groter is dan 5 à 8 kWh.</p>
-<h2>4 . FINANCIËLE ANALYSE: IMPACT OP DE ELEKTRICITEITSFACTUUR</h2>
+<h2 id="financiele-analyse-impact-op-de-elektriciteitsfactuur">FINANCIËLE ANALYSE: IMPACT OP DE ELEKTRICITEITSFACTUUR</h2>
 <p>Tot 1 juli 2019 hoefde de vraag om wel dan geen opslagbatterij bij te plaatsen eigenlijk niet gesteld te worden, aangezien de methode met de terugdraaiende energiemeter (de zgn. 'compensatieregeling') toeliet om het openbare elektriciteitsnet als opslagbuffer te gebruiken. Doch, met de komst van de digitale energiemeter zal daar mettertijd wel verandering in kunnen komen.</p>
 <p>In het geval van de mechanische, terugdraaiende energiemeter betekent de injectie van een productieoverschot in het net dat de teller achteruit draait en houdt de opname van elektrische energie vanuit het net in dat de teller vooruit draait. Aan het einde van de jaarlijkse verbruiksperiode wordt (en kan technisch gezien) enkel het verbruikte saldo door de energieleverancier aangerekend (het netto netverbruik). Indien dat saldo nul of negatief is (d.w.z. dat gedurende het jaar meer elektrische energie werd geïnjecteerd in het net dan er van het net werd afgenomen), betaalt men nul euro voor de <strong>verbruiksafhankelijke</strong> kosten, ook al werd elektriciteit aan het net onttrokken. Het achterliggende idee luidt dat het overschot dat men tijdens de "heldere maanden" in het net injecteert, men in de "donkere maanden" er terug af mag halen. Alleen als men meer afneemt van het net dan men injecteert, moet men het netto verbruikte deel betalen. Daarnaast moet, los van het verbruik, wel nog een "prosumententarief" worden betaald, dat kan beschouwd worden als een vergoeding voor het gebruik van het openbare net als opslagbuffer. Het prosumententarief wordt jaarlijks herzien, verschilt van netbeheerder tot netbeheerder, maar wordt door iedere netbeheerder berekend op basis van het nominaal AC-vermogen van de omvormer (zie <a href="https://www.vreg.be/nl/prosumententarief-sector">website van de VREG</a>).</p>
 <p>Met de komst van de digitale energiemeter is het nu mogelijk om, zowel de inkomende, als de uitgaande energiestroom afzonderlijk te meten.  In de plaats van een forfaitair prosumententarief te betalen op basis van het nominaal AC-vermogen van de omvormer, zal men er ook voor kunnen kiezen (althans tot 31 december 2020) het nettarief te betalen op de hoeveelheid elektrische energie die werkelijk van het net wordt afgenomen. Voor wat de overige verbruiksafhankelijke kosten betreft, zou het principe van de terugdraaiende teller gehandhaafd blijven (<a href="https://www.fluvius.be/nl/thema/meters-en-meterstanden/digitale-meter/digitale-meters-en-zonnepanelen-dit-moet-je-weten">zie website van FLUVIUS</a>).</p>
@@ -329,7 +378,7 @@
 <p><strong>Uitgangspunt:</strong><br>Op basis van een (geschat) jaarverbruik van 3774 kWh (cf. supra), komt in mijn situatie de totale <u>verbruiksafhankelijke</u> kostprijs <u>zonder</u> zonnepanelen neer op jaarlijks 1.203,65 EUR (3774 kWh x 0,3189326 EUR/kWh).</p>
 <p><strong>A.</strong>  Indien ik zou opteren voor de hierboven besproken FV installatie zonder batterijopslagsysteem en met terugdraaiende energiemeter (de compensatieregeling), dan volgt dat:</p>
 <ul>
-<li>de verbruiksafhankelijke kosten op basis van het netto netverbruik 0,- EUR zouden bedragen, want het bekomen netto netverbruik is zeer duidelijk negatief: -2055 kWh (zie <em>Jupyter Notebook</em>  <a href="..\static\notebooks\03_energieanalyse.html">DEEL 3 | SCHATTING VAN DE ENERGIEOPBRENGST</a> onder <em>Analyseresultaat 3: Zelfvoorziening en Zelfconsumptie Zonder Batterijopslagsysteem</em>)</li>
+<li>de verbruiksafhankelijke kosten op basis van het netto netverbruik 0,- EUR zouden bedragen, want het bekomen netto netverbruik is zeer duidelijk negatief: -2055 kWh (zie <em>Jupyter Notebook</em>  <a href="..\static\articles\fv-installatie\notebooks\03_energieanalyse.html">DEEL 3 | SCHATTING VAN DE ENERGIEOPBRENGST</a> onder <em>Analyseresultaat 3: Zelfvoorziening en Zelfconsumptie Zonder Batterijopslagsysteem</em>)</li>
 <li>het prosumententarief voor mij op vandaag 90,15 EUR/kW incl. 21% BTW zou kosten. Als de omvormer een nominaal vermogen van 5 kW bezit (cf. supra), komt dit uit op 450,75 EUR.</li>
 </ul>
 <p>Bijgevolg, onder optie A zou ik jaarlijks <strong>752,90 EUR</strong> kunnen besparen op mijn elektriciteitsfactuur (onder de assumptie dat de verbruiksonafhankelijke kosten niet zullen wijzigen ten opzichte van de situatie zonder zonnepanelen).</p>
@@ -349,22 +398,21 @@
 <p>Optie D lijkt de beste keuze, maar men moet ook oog hebben voor de terugverdientijd van de investering waarmee men deze jaarlijkse besparing op de elektriciteitsfactuur wenst te behalen. Tot op heden zijn batterijopslagsystemen behoorlijk prijzig. Maar sinds 1 augustus 2019 tracht de Vlaamse Overheid batterijopslagsystemen een duwtje in de rug te geven met een <a href="https://www.vlaanderen.be/premie-voor-thuisbatterij-voor-zelf-opgewekte-energie">premie</a>.</p>
     </div>
 
+                </div>
+            </div>
+
+            <div class="column side"></div>
+
         </div>
 
-        <div class="col-3 col-s-12">
-            
+        <div class="footer">
+            <p>
+                <i class='far fa-copyright'></i> Tom Christiaens 2019 |
+                Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a>
+                from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+            </p>
         </div>
 
-    </div>
-
-    <div class="footer">
-        <h3>
-            &copy; Tom Christiaens 2019
-        </h3>
-        <p>
-            icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a>
-            from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
-        </p>
     </div>
 
 </body>
