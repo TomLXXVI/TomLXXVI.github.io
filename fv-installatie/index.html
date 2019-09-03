@@ -8,57 +8,28 @@
     <link rel="stylesheet" href="/static/css/pygments.css">
     <script src="https://kit.fontawesome.com/49c5b2b09a.js"></script>
 </head>
+
 <body>
+    <div class="header">
+        <div id="header">
+    <img src="/static/logo/logo.png" alt="logo"><h1>Ingenieursbureau Christiaens</h1>
+</div>
+    </div>
 
-    <div class="wrapper">
+    <div class="row">
 
-        <div class="header">
-            <img src="/static/logo/logo.png" alt="logo" style="float: left;"><h1>Ingenieursbureau Christiaens</h1>
+        <div class="column left">
+            <div class="navbar">
+    <ul>
+        <li><a href="/index.html">Over ons en deze website</a></li>
+        <li><a href="/contact_us.html">Ons contacteren</a></li>
+        <li><a href="/articles.html">Leesartikelen</a></li>
+    </ul>
+</div>
         </div>
 
-        <div class="row">
-
-            <div class="column side">
-                <div class="nav">
-                    <ul>
-                        <li><a href="/index.html">Over ons en deze site</a></li>
-                        <li><a href="/contact.html">Ons contacteren</a></li>
-                        <li><a href="/articles.html">Leesartikelen</a></li>
-                    </ul>
-                </div>
-
-                <div class="aside">
-                    
-    
-        <div class="toc_layout">
-            <h2>Inhoudstafel</h2>
+        <div class="column center">
             
-<ul>
-<li><a href="#de-fotovoltaische-installatie-basisontwerp-en-energieanalyse">DE FOTOVOLTAÏSCHE INSTALLATIE: BASISONTWERP EN ENERGIEANALYSE</a><ul>
-<li><a href="#beschaduwingsanalyse">BESCHADUWINGSANALYSE</a></li>
-<li><a href="#basisontwerp-van-de-fotovoltaische-installatie">BASISONTWERP VAN DE FOTOVOLTAÏSCHE INSTALLATIE</a></li>
-<li><a href="#energieanalyse">ENERGIEANALYSE</a><ul>
-<li><a href="#geschatte-jaaropbrengst">Geschatte jaaropbrengst</a></li>
-<li><a href="#energiestromen">Energiestromen</a></li>
-<li><a href="#batterijopslagsysteem">Batterijopslagsysteem</a></li>
-</ul>
-</li>
-<li><a href="#financiele-analyse-impact-op-de-elektriciteitsfactuur">FINANCIËLE ANALYSE: IMPACT OP DE ELEKTRICITEITSFACTUUR</a></li>
-</ul>
-</li>
-</ul>
-
-        </div>
-    
-
-                </div>
-
-            </div>
-
-            <div class="column middle">
-                <div class="main">
-                    <!-- Add page content here -->
-                    
     <div class="article">
         <div class="toc">
 <ul>
@@ -77,7 +48,7 @@
 </ul>
 </div>
 <h1 id="de-fotovoltaische-installatie-basisontwerp-en-energieanalyse">DE FOTOVOLTAÏSCHE INSTALLATIE: BASISONTWERP EN ENERGIEANALYSE</h1>
-<p>In dit artikel zal het basisontwerp van een residentiële FV installatie worden behandeld. Vervolgens zal een prognose worden gemaakt van de energieopbrengst van deze FV installatie. Ook de zelfvoorziening en de zelfconsumptie van de FV installatie in combinatie met de verbruikersinstallatie zullen onder de loep worden genomen. Daarbij zal de vergelijking worden gemaakt tussen een installatie zonder batterijopslagsysteem en een installatie met batterijopslagsysteem. Tot slot zal voor de beide installaties gekeken worden naar de mogelijke impact op de elektriciteitsfactuur. </p>
+<p>In dit artikel wordt eerst het basisontwerp van een netgekoppelde, residentiële FV installatie behandeld om daarna een prognose te kunnen maken van de energiestromen tussen FV installatie, verbruikersinstallatie en net, waarbij zelfvoorziening en zelfconsumptie onder de loep zullen worden genomen. De vergelijking zal gemaakt worden tussen een installatie zonder en met batterijopslagsysteem. Tot slot zal voor beide installaties nog gekeken worden naar de mogelijke impact op de elektriciteitsfactuur. </p>
 <p>Volgens <a href="https://apps.energiesparen.be/zonnekaart">Zonnekaart Vlaanderen</a> zou circa de helft van het dakoppervlak van mijn woning ideaal geschikt zijn om zonnepanelen op te plaatsen.  Nochtans, in zuidelijke richting tegenover mijn woning bevinden zich twee hoge appartementsgebouwen. Het platte dak van de achterbouw -volgens "Zonnekaart Vlaanderen" een ideaal oppervlak voor zonnepanelen- is ook lager gelegen dan het gedeelte vooraan de woning (met zadeldak), waarvan de voorgevel naar het zuiden is georiënteerd.</p>
 <p><img alt="locatie" src="../static/articles/fv-installatie/images/locatie.png" /></p>
 <p>Daarom wilde ik zelf eens nagaan welke zonneopbrengst er kan verwacht worden, alvorens ik zonnepanelen laat plaatsen op het platte dak van de achterbouw. Ik verkies het platte dak om twee redenen:</p>
@@ -90,7 +61,7 @@
 <p>De berekeningsmethoden heb ik geïmplementeerd met de programmeertaal <a href="https://www.python.org/">Python</a>. In een drietal <a href="https://jupyter.org/">Jupyter Notebooks</a> worden de computerberekeningen stap voor stap uitgevoerd en toegelicht. De complete broncode van het project kan men <a href="https://github.com/TomLXXVI/pypv">hier</a> terugvinden. </p>
 <p>Hierna volgt een algemene bespreking over de wijze waarop het basisontwerp en de energieanalyse stap voor stap worden uitgevoerd zonder evenwel diep op de achterliggende computercode in te gaan. In de tekst worden koppelingen naar de <em>Jupyter Notebooks</em> vermeld, waarin de berekeningen gedemonstreerd worden. Het is niet de bedoeling van dit artikel om elke wiskundige formule en elke regel in het computerprogramma van naaldje tot draadje te verklaren. In de eerste plaats is het de bedoeling om te illustreren hoe complexe of uitgebreide vraagstukken, waar de opbrengstprognoseberekening van een FV installatie een voorbeeld van is, met behulp van de computer op een boeiende manier bestudeerd kunnen worden.</p>
 <h2 id="beschaduwingsanalyse">BESCHADUWINGSANALYSE</h2>
-<p>Wanneer men overweegt om zonnepanelen te installeren, is het alvast goed om weten hoeveel direct of rechtstreeks zonlicht in de loop van een jaar kan invallen op de voorziene locatie van de zonnepanelen. Reliëf, bebouwing, begroeiing of andere obstakels kunnen gedurende bepaalde periodes van het jaar of van de dag verhinderen dat direct zonlicht de zonnepanelen kan bereiken.</p>
+<p>Wanneer men overweegt om zonnepanelen te installeren, is het alvast goed om weten hoeveel direct of rechtstreeks zonlicht men in de loop van een jaar kan verwachten op de gewenste locatie van de zonnepanelen. Reliëf, bebouwing, begroeiing of andere obstakels kunnen gedurende bepaalde periodes van het jaar of van de dag verhinderen dat direct zonlicht de zonnepanelen kan bereiken.</p>
 <p>Een (cartesiaans) <strong>zonnebaandiagram</strong> beschrijft de baan van de zon langs de sferische hemelkoepel op een welbepaalde locatie (aangeduid met de lengte- en breedtegraad) en op een welbepaalde dag van het jaar.</p>
 <p>De positie van de zon aan de hemelkoepel ten opzichte van een lokale waarnemer op de locatie in kwestie kan worden aangeduid met de azimut- en de elevatiehoek.</p>
 <p>De azimuthoek situeert zich in het horizontale vlak waarop de waarnemer staat. De elevatiehoek duidt de hoogte van de zon aan boven dit horizontale vlak. De elevatiehoek is het complement van de zenithoek. De elevatiehoek is overdag een scherpe hoek tussen 0° en 90°. Als de elevatie 0° bedraagt, wil dit betekenen dat de zon zich aan de horizon bevindt (dit is de laagste zonnestand, rond zonsopgang en -ondergang).</p>
@@ -398,19 +369,42 @@
 <p>Optie D lijkt de beste keuze, maar men moet ook oog hebben voor de terugverdientijd van de investering waarmee men deze jaarlijkse besparing op de elektriciteitsfactuur wenst te behalen. Tot op heden zijn batterijopslagsystemen behoorlijk prijzig. Maar sinds 1 augustus 2019 tracht de Vlaamse Overheid batterijopslagsystemen een duwtje in de rug te geven met een <a href="https://www.vlaanderen.be/premie-voor-thuisbatterij-voor-zelf-opgewekte-energie">premie</a>.</p>
     </div>
 
-                </div>
-            </div>
+        </div>
 
-            <div class="column side"></div>
+        <div class="column right">
+            
+    
+        <div class="toc_layout">
+            <h2>Inhoudstafel</h2>
+            
+<ul>
+<li><a href="#de-fotovoltaische-installatie-basisontwerp-en-energieanalyse">DE FOTOVOLTAÏSCHE INSTALLATIE: BASISONTWERP EN ENERGIEANALYSE</a><ul>
+<li><a href="#beschaduwingsanalyse">BESCHADUWINGSANALYSE</a></li>
+<li><a href="#basisontwerp-van-de-fotovoltaische-installatie">BASISONTWERP VAN DE FOTOVOLTAÏSCHE INSTALLATIE</a></li>
+<li><a href="#energieanalyse">ENERGIEANALYSE</a><ul>
+<li><a href="#geschatte-jaaropbrengst">Geschatte jaaropbrengst</a></li>
+<li><a href="#energiestromen">Energiestromen</a></li>
+<li><a href="#batterijopslagsysteem">Batterijopslagsysteem</a></li>
+</ul>
+</li>
+<li><a href="#financiele-analyse-impact-op-de-elektriciteitsfactuur">FINANCIËLE ANALYSE: IMPACT OP DE ELEKTRICITEITSFACTUUR</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+    
 
         </div>
 
-        <div class="footer">
-            <i class='far fa-copyright'></i> Tom Christiaens 2019 |
-            Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a>
-            from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
-        </div>
+    </div>
 
+    <div class="footer">
+        <p>
+    <i class='far fa-copyright'></i> Tom Christiaens 2019 |
+    Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a>
+    from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+</p>
     </div>
 
 </body>

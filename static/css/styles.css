@@ -1,95 +1,75 @@
-/*-- RESPONSIVE GRID VIEW --*/
+/* -- WEB PAGE STRUCTURE -- */
 
 * {
-    box-sizing: border-box;  /* make sure that padding and border are included in total width and height of elements */
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .row {
+    height: 85%;
     display: flex;
+    flex-direction: row;
+    overflow: hidden;
 }
 
 .column {
-    padding: 10px;
+    padding: 15px;
 }
 
-.column.side {
-    flex: 1;
+.column.left {
+    flex: 25%;
 }
 
-.column.middle {
-    flex: 2;
+.column.center {
+    flex: 50%;
+    overflow: auto;
 }
 
-@media (max-width: 600px) {
+.column.right {
+    flex: 25%;
+    overflow: auto;
+}
+
+/* -- small screens -- */
+@media only screen and (max-width: 700px) {
     .row {
         flex-direction: column;
+        overflow: auto;
+    }
+    .column.right {
+        order: 2;
+        overflow: initial;
+    }
+    .column.center {
+        order: 3;
+        overflow: initial;
     }
 }
 
 /* ================================================================================================================== */
-/* -- HEADER LAYOUT -- */
+/* -- HEADER & FOOTER -- */
+
 .header {
-    padding: 15px;
-    text-align: left;
+    padding: 15px 0;
     background-image: linear-gradient(to right, #126887, #33b5e5);
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #ffffff;
 }
 
-/* ================================================================================================================== */
-/* -- NAVIGATION LAYOUT -- */
-.nav {
-    padding: 20px;
+#header {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 15px;
 }
 
-.nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-.nav li {
-    padding: 8px;
-    margin-bottom: 7px;
-    background-color: #33b5e5;
-    color: #ffffff;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-}
-
-.nav li:hover {
-    background-color: #0099cc;
-}
-
-.nav a {
-    text-decoration: none;
-    color: #ffffff;
-}
-
-.nav a:hover {
-    text-decoration: none;
-    color: #ffffff;
-}
-
-/* ================================================================================================================== */
-/* -- MAIN AREA LAYOUT -- */
-.main {
-    padding: 20px 20px 50px 20px;
-}
-
-/* ================================================================================================================== */
-/* -- ASIDE CONTENT LAYOUT -- */
-.aside {
-    padding: 20px;
-}
-
-/* ================================================================================================================== */
-/* -- FOOTER LAYOUT -- */
 .footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    padding: 15px;
+    padding: 15px 0;
     text-align: center;
     background-color: #7b949d;
     color: #ffffff;
@@ -103,6 +83,40 @@
 
 .footer a:hover {
     text-decoration: underline;
+}
+
+/* ================================================================================================================== */
+/* -- NAVIGATION BAR -- */
+.navbar {
+    padding: 10px;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar li {
+    padding: 8px;
+    margin-bottom: 7px;
+    background-color: #33b5e5;
+    color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.navbar li:hover {
+    background-color: #0099cc;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.navbar a:hover {
+    text-decoration: none;
+    color: #ffffff;
 }
 
 /* ================================================================================================================== */
@@ -134,7 +148,7 @@ html {
 /* -- links -- */
 a {
     text-decoration: none;
-    color: #000000
+    color: #000000;
 }
 
 a:hover {
@@ -204,24 +218,21 @@ a.tag:hover {
 }
 
 /* ================================================================================================================== */
-/* -- CONTACT LAYOUT -- */
+/* -- CONTACT PAGE LAYOUT -- */
 
 .contact {
-    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
 }
 
-/* -- link -- */
-.contact a {
-    text-decoration: none;
-    color: #178bb5
-}
-
-.contact a:hover {
-    text-decoration: underline;
+.contact div {
+    padding: 20px;
 }
 
 /* ================================================================================================================== */
-/* -- TOC LAYOUT -- */
+/* -- TOC BOX LAYOUT -- */
 
 .toc_layout {
     padding: 15px;
@@ -238,4 +249,28 @@ a.tag:hover {
 
 .toc_layout li {
     padding-top: 8px;
+}
+
+/* ================================================================================================================== */
+/* -- ARTICLES LIST LAYOUT -- */
+
+ul.articles {
+    list-style-type: none;
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+    padding: 12px
+}
+
+li.articles {
+    text-align: left;
+    margin: 10px;
+}
+
+a.articles {
+    text-decoration: none;
+    color: #178bb5
+}
+
+a.articles:hover {
+    text-decoration: underline overline;
 }
