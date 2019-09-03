@@ -92,15 +92,23 @@
 <p>De computerroutines voor de bepaling van de (V,I)-karakteristieken van de FV matrix i.f.v. irradiantie en buitentemperatuur en voor het dimensioneren van de omvormer en de bekabeling steunen op het boek <em>Planning and Installing Photovoltaic Systems, 3Ed.</em> (Deutsche Gesellschaft für Sonnenenergie [DGS], 2013).</p>
 <p>Volgende stappen worden na elkaar in het basisontwerp van een FV installatie doorlopen:</p>
 <ol>
-<li>Men voert aan het computerprogramma de technische kenmerken toe van het zonnepaneel, welke zijn terug te vinden in de datasheet van het zonnepaneel.</li>
-<li>Vervolgens configureert men met dit zonnepaneel één of meer FV matrices. Een FV matrix is samengesteld uit <em>N</em> strengen van telkens <em>M</em> zonnepanelen (<em>M</em> x <em>N</em>-matrix). In de regel zal men zonnepanelen in één matrix combineren die aan dezelfde zonnebestralingscondities zullen blootgesteld worden.<br><br>Omvormers zijn doorgaans met 2 of soms meer zgn. MPPT-ingangen uitgerust (MPPT staat voor ‘Maximum Power Point Tracking’). Aan elke MPPT-ingang kan een FV matrix verbonden worden. MPPT houdt in dat de omvormer over een soort intelligent orgaan beschikt waarmee het voortdurend het werkpunt van de FV matrix kan zoeken dat het grootste opbrengstvermogen oplevert. Dit werkpunt wordt het 'Maximum Power Point' (MPP) genoemd.</li>
-<li>Eenmaal de FV matrix of matrices zijn gedefinieerd, kan het computerprogramma berekenen welke minimale sectie de strengkabels in een matrix moeten bezitten, opdat het spanningsverlies over de kabels niet meer dan 1% zou bedragen. Daartoe dient men eerst de kabellengten door te geven aan het computerprogramma . Op basis van de teruggegeven resultaten kan dan een standaard geleidersectie  worden geselecteerd die groter moet zijn dan de berekende minimale sectie.</li>
-<li>Eenmaal de FV matrix of matrices gedefinieerd zijn, kan men ook nagaan welk werkingsgebied de MPPT-ingangen van de omvormer moeten bezitten om ook onder waarschijnlijk voorkomende extreme combinaties van irradiantie en buitentemperatuur het MPP-vermogen vanuit de FV matrix naar AC-vermogen te kunnen omzetten. Het werkingsgebied van een MPPT-ingang wordt begrensd door de minimum MPP-spanningslimiet, de maximum DC-spanningslimiet, de DC-stroomlimiet en de DC-vermogenlimiet.</li>
+<li>
+<p>Men voert aan het computerprogramma de technische kenmerken toe van het zonnepaneel, welke zijn terug te vinden in de datasheet van het zonnepaneel.</p>
+</li>
+<li>
+<p>Vervolgens configureert men met dit zonnepaneel één of meer FV matrices. Een FV matrix is samengesteld uit <em>N</em> strengen van telkens <em>M</em> zonnepanelen (<em>M</em> x <em>N</em>-matrix). In de regel zal men zonnepanelen in één matrix combineren die aan dezelfde zonnebestralingscondities zullen blootgesteld worden. Omvormers zijn doorgaans met 2 of soms meer zgn. MPPT-ingangen uitgerust (MPPT staat voor ‘Maximum Power Point Tracking’). Aan elke MPPT-ingang kan een FV matrix verbonden worden. MPPT houdt in dat de omvormer over een soort intelligent orgaan beschikt waarmee het voortdurend het werkpunt van de FV matrix kan zoeken dat het grootste opbrengstvermogen oplevert. Dit werkpunt wordt het 'Maximum Power Point' (MPP) genoemd.</p>
+</li>
+<li>
+<p>Eenmaal de FV matrix of matrices zijn gedefinieerd, kan het computerprogramma berekenen welke minimale sectie de strengkabels in een matrix moeten bezitten, opdat het spanningsverlies over de kabels niet meer dan 1% zou bedragen. Daartoe dient men eerst de kabellengten door te geven aan het computerprogramma . Op basis van de teruggegeven resultaten kan dan een standaard geleidersectie  worden geselecteerd die groter moet zijn dan de berekende minimale sectie.</p>
+</li>
+<li>
+<p>Eenmaal de FV matrix of matrices gedefinieerd zijn, kan men ook nagaan welk werkingsgebied de MPPT-ingangen van de omvormer moeten bezitten om ook onder waarschijnlijk voorkomende extreme combinaties van irradiantie en buitentemperatuur het MPP-vermogen vanuit de FV matrix naar AC-vermogen te kunnen omzetten. Het werkingsgebied van een MPPT-ingang wordt begrensd door de minimum MPP-spanningslimiet, de maximum DC-spanningslimiet, de DC-stroomlimiet en de DC-vermogenlimiet.</p>
+</li>
+<li>
+<p>Daarmee kan vervolgens een geschikte omvormer worden geselecteerd. De technische kenmerken vermeld in de datasheet van een kandidaat-omvormer worden daartoe in het computerprogramma  ingevoerd.  </p>
+</li>
 </ol>
 <p><img alt="required_working_range" src="../static/articles/fv-installatie/images/required_working_range.png" /></p>
-<ol>
-<li>Daarmee kan vervolgens een geschikte omvormer worden geselecteerd. De technische kenmerken vermeld in de datasheet van een kandidaat-omvormer worden daartoe in het computerprogramma  ingevoerd.  </li>
-</ol>
 <p>Belangrijk voor een nauwkeurige schatting van de zonneopbrengst zijn de rendementen van de omvormer onder deelbelasting (belastingen kleiner dan het nominaal vermogen van de omvormer) en onder variabele DC-ingangsspanning van de FV matrix (voornamelijk afhankelijk van de zonneceltemperatuur). Deze deellastrendementswaarden vindt men doorgaans terug in de datasheet of in de handleiding van de omvormer.</p>
 <p><img alt="omvormerrendement" src="../static/articles/fv-installatie/images/omvormerrendement.png" /></p>
 <blockquote>

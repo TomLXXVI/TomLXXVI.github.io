@@ -29,6 +29,7 @@ body {
 .column.center {
     flex: 50%;
     overflow: auto;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 .column.right {
@@ -37,7 +38,7 @@ body {
 }
 
 /* -- small screens -- */
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 992px) {
     .row {
         flex-direction: column;
         overflow: auto;
@@ -245,6 +246,7 @@ a.tag:hover {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    overflow: hidden;
 }
 
 .toc_layout li {
