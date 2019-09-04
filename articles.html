@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,13 +21,23 @@
     <div class="row">
 
         <div class="column left">
-            <div class="navbar">
-    <ul>
-        <li><a href="/index.html">Over ons en deze website</a></li>
-        <li><a href="/contact_us.html">Ons contacteren</a></li>
-        <li><a href="/articles.html">Leesartikelen</a></li>
+            
+    <ul class="navbar">
+        <li><a class="navbar" href="/index.html">Over ons en deze website</a></li>
+        <li><a class="navbar" href="/contact_us.html">Ons contacteren</a></li>
+        <li class="dropdown">
+            <a class="dropbtn" href="#">Leesartikelen</a>
+            <div class="dropdown-content">
+                <a href="/articles.html">Alle artikelen</a>
+                
+                    <a href="/tag/elektriciteit/">Artikelen over elektriciteit</a>
+                
+                    <a href="/tag/zonnepanelen/">Artikelen over zonnepanelen</a>
+                
+            </div>
+        </li>
     </ul>
-</div>
+
         </div>
 
         <div class="column center">
@@ -41,7 +53,7 @@
             
                 <a class="tag" href="/tag/elektriciteit/">elektriciteit</a>
             
-                <a class="tag" href="/tag/fotovolta%C3%AFsch/">fotovoltaïsch</a>
+                <a class="tag" href="/tag/zonnepanelen/">zonnepanelen</a>
             
         
     </li>

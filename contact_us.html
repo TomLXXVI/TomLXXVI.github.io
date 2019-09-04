@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,13 +21,23 @@
     <div class="row">
 
         <div class="column left">
-            <div class="navbar">
-    <ul>
-        <li><a href="/index.html">Over ons en deze website</a></li>
-        <li><a href="/contact_us.html">Ons contacteren</a></li>
-        <li><a href="/articles.html">Leesartikelen</a></li>
+            
+    <ul class="navbar">
+        <li><a class="navbar" href="/index.html">Over ons en deze website</a></li>
+        <li><a class="navbar" href="/contact_us.html">Ons contacteren</a></li>
+        <li class="dropdown">
+            <a class="dropbtn" href="#">Leesartikelen</a>
+            <div class="dropdown-content">
+                <a href="/articles.html">Alle artikelen</a>
+                
+                    <a href="/tag/elektriciteit/">Artikelen over elektriciteit</a>
+                
+                    <a href="/tag/zonnepanelen/">Artikelen over zonnepanelen</a>
+                
+            </div>
+        </li>
     </ul>
-</div>
+
         </div>
 
         <div class="column center">
@@ -34,25 +46,25 @@
         <div class="contact">
         
             <div>
-                <h2 style="text-align: center">Dirk Christiaens</h2>
-                <p style="margin-left: 25px">
+                <span id="contact_header">Dirk Christiaens</span>
+                <span>
                     Vredelaan 38<br>
                     8500 Kortrijk<br>
                     <i class='fas fa-phone'></i> 056 21 88 27<br>
                     <i class='fas fa-fax'></i> 056 25 74 80<br>
                     <i class='fas fa-envelope'></i><a href="mailto: mail@dirkchristiaens.be"> mail@dirkchristiaens.be</a>
-                </p>
+                </span>
             </div>
         
             <div>
-                <h2 style="text-align: center">Tom Christiaens</h2>
-                <p style="margin-left: 25px">
+                <span id="contact_header">Tom Christiaens</span>
+                <span>
                     Vaartstraat 9<br>
                     9030 Gent (Mariakerke)<br>
                     <i class='fas fa-phone'></i> 09 234 05 16<br>
                     <i class='fas fa-fax'></i> 09 234 05 16<br>
                     <i class='fas fa-envelope'></i><a href="mailto: tom.chr@proximus.be"> tom.chr@proximus.be</a>
-                </p>
+                </span>
             </div>
         
         </div>
