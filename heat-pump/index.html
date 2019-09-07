@@ -1,0 +1,636 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>IBC - RAMING VAN HET JAARLIJKS ENERGIEVERBRUIK VAN EEN LUCHT/WATER-WARMTEPOMP</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="/static/logo/logo.ico">
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="/static/css/pygments.css">
+    <script src="https://kit.fontawesome.com/49c5b2b09a.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js"></script>
+    <script>
+        MathJax.Hub.Config({
+            config: ["MMLorHTML.js"],
+            jax: ["input/TeX", "output/HTML-CSS", "output/NativeMML"],
+            extensions: ["MathMenu.js", "MathZoom.js"]
+        });
+    </script>
+</head>
+
+<body>
+    <div class="header">
+        <div id="header">
+    <img src="/static/logo/logo.png" alt="logo"><h1>Ingenieursbureau Christiaens</h1>
+</div>
+    </div>
+
+    <div class="row">
+
+        <div class="column left">
+            
+    <ul class="navbar">
+        <li><a class="navbar" href="/index.html">Over ons en deze website</a></li>
+        <li><a class="navbar" href="/contact_us.html">Ons contacteren</a></li>
+        <li class="dropdown">
+            <a class="dropbtn" href="#">Leesartikelen</a>
+            <div class="dropdown-content">
+                <a href="/articles.html">Alle artikelen</a>
+                
+                    <a href="/tag/HVAC/">Artikelen over HVAC</a>
+                
+                    <a href="/tag/elektriciteit/">Artikelen over elektriciteit</a>
+                
+            </div>
+        </li>
+    </ul>
+
+        </div>
+
+        <div class="column center">
+            
+    <div class="article">
+        <div class="toc">
+<ul>
+<li><a href="#raming-van-het-jaarlijks-energieverbruik-van-een-luchtwater-warmtepomp">RAMING VAN HET JAARLIJKS ENERGIEVERBRUIK VAN EEN LUCHT/WATER-WARMTEPOMP</a><ul>
+<li><a href="#gebouw-opstellen-van-de-warmtebelastingskarakteristiek">Gebouw: opstellen van de warmtebelastingskarakteristiek</a></li>
+<li><a href="#warmtepomp-opstellen-van-de-verwarmingscapaciteitskarakteristiek">Warmtepomp: opstellen van de verwarmingscapaciteitskarakteristiek</a></li>
+<li><a href="#bivalentiepunt-van-het-warmtepompsysteem">Bivalentiepunt van het warmtepompsysteem</a></li>
+<li><a href="#raming-van-het-energieverbruik-met-de-binmethode">Raming van het energieverbruik met de binmethode</a></li>
+<li><a href="#verfijning-van-de-binmethode">Verfijning van de binmethode</a></li>
+<li><a href="#impact-op-de-energiefactuur-luchtwater-warmtepomp-versus-aardgasketel">Impact op de energiefactuur: lucht/water-warmtepomp versus aardgasketel</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="raming-van-het-jaarlijks-energieverbruik-van-een-luchtwater-warmtepomp">RAMING VAN HET JAARLIJKS ENERGIEVERBRUIK VAN EEN LUCHT/WATER-WARMTEPOMP</h1>
+<p>In dit artikel wordt de <strong>binmethode</strong> toegelicht waarmee men het elektrisch energieverbruik van een  warmtepomp kan ramen. De werking van de warmtepomp is gebaseerd op de mechanische dampcompressiekoelcyclus. De beschouwde warmtepomp betreft een inverter-aangedreven lucht/water-warmtepomp die is uitgerust met een elektrische bijverwarming (mono-energetisch systeem).</p>
+<p>Het energieverbruik van de warmtepomp zal afhangen van het gebouw dat de warmtepomp moet verwarmen. De <strong>warmtebelastingskarakteristiek</strong> van het gebouw beschrijft de warmtebehoefte van het gebouw i.f.v. de buitentemperatuur. Het geeft weer welk thermisch vermogen het gebouw vereist om de gewenste binnentemperatuur in het gebouw te handhaven bij een zekere buitentemperatuur. De warmtebelastingskarakteristiek van het gebouw kan men afleiden uit de warmteverliesberekening van het gebouw. Men onderscheidt:</p>
+<ul>
+<li>het warmteverlies naar de buitenomgeving doorheen de gebouwschil (het warmtegeleidingsverlies),</li>
+<li>het warmteverlies verbonden aan ventilatie of buitenluchtinfiltratie, </li>
+<li>het warmtevermogen dat nodig is voor de bereiding van sanitair warm water (onafhankelijk van de buitentemperatuur).</li>
+</ul>
+<p>De verwarmingscapaciteit van een warmtepomp wordt beschreven door de <strong>verwarmingscapaciteitskarakteristiek</strong>. Deze geeft weer welk thermisch vermogen de warmtepomp in stationair bedrijf kan leveren bij een zekere buitentemperatuur en een zekere watervertrektemperatuur. Men kan deze afleiden uit de prestatietabellen van de warmtepomp die de fabrikant meegeeft. </p>
+<p>De binmethode om het energieverbruik van de warmtepomp over een stookseizoen te ramen, heb ik een in een computerprogramma geïmplementeerd met de programmeertaal <em>Python</em>. Het  gebruik van het programma wordt gedemonstreerd in een <em>Jupyter Notebook</em> dat men <a href="../static/articles/heat-pump/heat_pump_01.html">hier</a> kan terugvinden. Hieronder wordt  de achtergrond toegelicht waarop het computerprogramma is gebaseerd.</p>
+<h2 id="gebouw-opstellen-van-de-warmtebelastingskarakteristiek">Gebouw: opstellen van de warmtebelastingskarakteristiek</h2>
+<p>De warmtebelastingskarakteristiek kan a.h.v. de volgende parameters worden bepaald:</p>
+<ul>
+<li>Parameter <code>Q_cond_des</code> is het warmtegeleidingsverlies doorheen de gebouwschil onder ontwerpcondities (<em>'des'</em> refereert aan <em>'design'</em>). Deze parameter volgt direct uit de warmteverliesberekening van het gebouw. Het is het warmteverlies dat zou optreden bij de koudst mogelijke buitentemperatuur.</li>
+<li>Parameter <code>Q_vent_des</code> is het ventilatie- of infiltratieverlies. Als een gebouw wordt geventileerd, wordt verse buitenlucht in het gebouw gebracht. Deze buitenlucht zal in het gebouw warmte opnemen. Door warmterecuperatie kan men het ventilatieverlies beperken (de naar buiten afgevoerde binnenlucht draagt in een warmtewisselaar warmte over aan de verse ventilatielucht die van buitenaf wordt aangezogen door het ventilatiesysteem). In de tabel hieronder werd het ventilatieverlies bepaald op basis van het ventilatiedebiet dat door het EPB wordt vereist en is er aangenomen dat 80% van de thermische energie in de afvoerlucht gerecupereerd wordt.</li>
+<li>Parameter <code>Q_dhw_des</code> is het warmtevermogen dat gebruikt wordt om sanitair koud water op te warmen.</li>
+<li>Parameter <code>T_outside_bal</code> is de buitentemperatuur waarvoor het gebouw geen warmtebehoefte heeft. Deze temperatuur wordt de <em>balans-</em> of <em>basistemperatuur</em> van het gebouw genoemd. Deze temperatuur is lager dan de gewenste binnentemperatuur in het gebouw. Behalve van de gewenste binnentemperatuur in het gebouw, hangt deze af van de grootte van interne warmtewinsten in het gebouw, van zonnestraling die invalt op het gebouw of via ramen in het gebouw binnendringt en van de isolatiegraad van het gebouw. De basistemperatuur van een gebouw is in werkelijkheid dus een tijdsvariabel gegeven. Gasleveranciers hanteren voor voorspellingen van het aardgasverbruik een aangenomen basistemperatuur van 16,5 °C. Voor de bepaling van de SCOP (<em>seasonal coefficient of performance</em>) van warmtepompen hanteert de norm EN 14825 een aangenomen basistemperatuur van 16 °C.</li>
+<li>Parameter <code>T_outside_des</code> is de koudst mogelijke buitentemperatuur waarop de warmteverliesberekening van een gebouw steunt. Deze ontwerpwaarde wordt bv. in de norm EN 12831 opgegeven. In de geografische regio onder beschouwing wordt een ontwerpbuitentemperatuur voor verwarming opgegeven van -8 °C.</li>
+<li>Parameter <code>T_room_des</code> is de gewenste binnentemperatuur waarop de warmteverliesberekening van een gebouw steunt. Voor verschillende types van binnenruimten kunnen andere ontwerpwaarden aangenomen worden. Voor de raming van het energieverbruik van de warmtepomp wordt de gemiddelde binnentemperatuur op het niveau van het gebouw in aanmerking genomen.</li>
+<li>Parameter <code>eff_inst</code> is het rendement van de verwarmingsinstallatie. Niet alle door de warmtegenerator geproduceerde warmte wordt via de warmte-emitters aan de ruimten afgegeven; een gedeelte raakt onderweg verloren. Voor moderne verwarmingsinstallaties wordt in de regel een richtwaarde van 90% aangenomen.</li>
+</ul>
+<p>In de <em>Jupyter Notebook</em> waarmee het computerprogramma wordt gedemonstreerd zijn de volgende waarden toegepast:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Waarde</th>
+<th>Eenheid</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Q_cond_des</code></td>
+<td>10,321</td>
+<td>kW</td>
+</tr>
+<tr>
+<td><code>Q_vent_des</code></td>
+<td>0,928</td>
+<td>kW</td>
+</tr>
+<tr>
+<td><code>Q_dhw_des</code></td>
+<td>0,759</td>
+<td>kW</td>
+</tr>
+<tr>
+<td><code>T_outside_bal</code></td>
+<td>16</td>
+<td>°C</td>
+</tr>
+<tr>
+<td><code>T_outside_des</code></td>
+<td>-8</td>
+<td>°C</td>
+</tr>
+<tr>
+<td><code>T_room_des</code></td>
+<td>20,385</td>
+<td>°C</td>
+</tr>
+<tr>
+<td><code>eff_inst</code></td>
+<td>90</td>
+<td>%</td>
+</tr>
+</tbody>
+</table>
+<p>Noteer dat het hier om daggemiddelde waarden gaat. Zo werd ook het thermisch vermogen <code>Q_dhw_des</code>voor sanitair warmwaterbereiding (SWW-bereiding) bekomen door de totale dagelijkse warmtebehoefte voor SWW-bereiding als het ware over een volledig etmaal (24 h) uit te smeren. In realiteit zal de SWW-bereiding maar over een beperkt aantal uren van de dag plaatsvinden. Dit impliceert dat de dagelijkse warmtehoeveelheid t.b.v. SWW-bereiding over een kortere tijdspanne zal moeten geleverd worden. Bijgevolg, het door de warmtepomp toe te voeren thermisch vermogen zal in perioden dat SWW-bereiding actief is hoger zijn dan het daggemiddeld vermogen. In het computerprogramma is wel voor de bepaling van het daggemiddeld thermisch vermogen t.b.v. SWW-bereiding aangenomen dat het totaal dagelijks sanitair waterverbruik (warm én koud) van een doorsnee gezin van 4 personen (348 liter) van 10 naar 55 °C wordt verwarmd. (Een praktische vuistregel stelt dat het dagelijks warmwaterverbruik per persoon rond 50 liter schommelt.)</p>
+<h2 id="warmtepomp-opstellen-van-de-verwarmingscapaciteitskarakteristiek">Warmtepomp: opstellen van de verwarmingscapaciteitskarakteristiek</h2>
+<p>De verwarmingscapaciteitskarakteristiek van de warmtepomp kan worden bepaald aan de hand van de gegevens die men in prestatietabellen van de warmtepomp kan terugvinden. Een prestatietabel geldt voor  een gegeven, vaste watervertrektemperatuur. In de tabel wordt voor een reeks van buitentemperaturen opgegeven welke de verwarmingscapaciteit is van de warmtepomp (<em>P therm.</em>),  welk elektrisch vermogen de warmtepomp daarvoor consumeert (<em>P elek.</em>) en welke prestatiecoëfficiënt (<em>COP</em>) deze dan behaalt onder stationair bedrijf. Er worden voor verschillende watervertrektemperaturen aparte prestatietabellen gepubliceerd. De tabel hieronder geeft een voorbeeld van zo'n prestatietabel. Deze geldt bij een watervertrektemperatuur van 55 °C (W55).</p>
+<table>
+<thead>
+<tr>
+<th>To [°C]</th>
+<th>P elek. [kW]</th>
+<th>P therm. [kW]</th>
+<th>COP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>22</td>
+<td>2.24</td>
+<td>7</td>
+<td>3.13</td>
+</tr>
+<tr>
+<td>21</td>
+<td>2.26</td>
+<td>7</td>
+<td>3.1</td>
+</tr>
+<tr>
+<td>20</td>
+<td>2.27</td>
+<td>7</td>
+<td>3.08</td>
+</tr>
+<tr>
+<td>19</td>
+<td>2.31</td>
+<td>7</td>
+<td>3.03</td>
+</tr>
+<tr>
+<td>18</td>
+<td>2.35</td>
+<td>7</td>
+<td>2.98</td>
+</tr>
+<tr>
+<td>17</td>
+<td>2.39</td>
+<td>7</td>
+<td>2.93</td>
+</tr>
+<tr>
+<td>16</td>
+<td>2.42</td>
+<td>7</td>
+<td>2.89</td>
+</tr>
+<tr>
+<td>15</td>
+<td>2.46</td>
+<td>7</td>
+<td>2.85</td>
+</tr>
+<tr>
+<td>14</td>
+<td>2.51</td>
+<td>7</td>
+<td>2.79</td>
+</tr>
+<tr>
+<td>13</td>
+<td>2.55</td>
+<td>7</td>
+<td>2.75</td>
+</tr>
+<tr>
+<td>12</td>
+<td>2.6</td>
+<td>7</td>
+<td>2.69</td>
+</tr>
+<tr>
+<td>11</td>
+<td>2.65</td>
+<td>7</td>
+<td>2.64</td>
+</tr>
+<tr>
+<td>10</td>
+<td>2.69</td>
+<td>7</td>
+<td>2.6</td>
+</tr>
+<tr>
+<td>9</td>
+<td>2.75</td>
+<td>7</td>
+<td>2.55</td>
+</tr>
+<tr>
+<td>8</td>
+<td>2.8</td>
+<td>7</td>
+<td>2.5</td>
+</tr>
+<tr>
+<td>7</td>
+<td>2.66</td>
+<td>7</td>
+<td>2.45</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2.92</td>
+<td>7</td>
+<td>2.4</td>
+</tr>
+<tr>
+<td>5</td>
+<td>3.11</td>
+<td>7</td>
+<td>2.23</td>
+</tr>
+<tr>
+<td>4</td>
+<td>3.31</td>
+<td>6.9</td>
+<td>2.08</td>
+</tr>
+<tr>
+<td>3</td>
+<td>3.5</td>
+<td>6.85</td>
+<td>1.96</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3.7</td>
+<td>6.8</td>
+<td>1.84</td>
+</tr>
+<tr>
+<td>1</td>
+<td>3.75</td>
+<td>6.82</td>
+<td>1.82</td>
+</tr>
+<tr>
+<td>0</td>
+<td>3.8</td>
+<td>6.84</td>
+<td>1.8</td>
+</tr>
+<tr>
+<td>-1</td>
+<td>3.85</td>
+<td>6.87</td>
+<td>1.78</td>
+</tr>
+<tr>
+<td>-2</td>
+<td>3.9</td>
+<td>6.89</td>
+<td>1.77</td>
+</tr>
+<tr>
+<td>-3</td>
+<td>3.95</td>
+<td>6.91</td>
+<td>1.75</td>
+</tr>
+<tr>
+<td>-4</td>
+<td>4</td>
+<td>6.93</td>
+<td>1.73</td>
+</tr>
+<tr>
+<td>-5</td>
+<td>4.05</td>
+<td>6.96</td>
+<td>1.72</td>
+</tr>
+<tr>
+<td>-6</td>
+<td>4.1</td>
+<td>6.98</td>
+<td>1.7</td>
+</tr>
+<tr>
+<td>-7</td>
+<td>4.15</td>
+<td>7</td>
+<td>1.69</td>
+</tr>
+<tr>
+<td>-8</td>
+<td>4.2</td>
+<td>7.02</td>
+<td>1.67</td>
+</tr>
+<tr>
+<td>-9</td>
+<td>4.25</td>
+<td>7.04</td>
+<td>1.66</td>
+</tr>
+<tr>
+<td>-10</td>
+<td>4.3</td>
+<td>7.06</td>
+<td>1.64</td>
+</tr>
+</tbody>
+</table>
+<p>Een prestatietabel van de warmtepomp wordt in een <em>csv</em>-bestand aan het computerprogramma doorgegeven.</p>
+<h2 id="bivalentiepunt-van-het-warmtepompsysteem">Bivalentiepunt van het warmtepompsysteem</h2>
+<p>Met de term <em>warmtepompsysteem</em> wordt hierna verwezen aan de combinatie van warmtepomp en gebouw.</p>
+<p>Nadat de parameters voor de bepaling van de warmtebelastingskarakteristiek van het gebouw en het <em>csv</em>-bestand voor de bepaling van de verwarmingscapaciteitskarakteristiek van de warmtepomp aan het computerprogramma zijn toegevoerd, kan deze de karakteristieken berekenen en ook tekenen. De grafiek hieronder toont de karakteristiek van het gecombineerd systeem gebouw + warmtepomp bij een watervertrektemperatuur van 55 °C (W55). De blauwe curve is de warmtebelastingskarakteristiek (<em>heating load line</em>) van het gebouw en de oranje curve is de verwarmingscapaciteitskarakteristiek (<em>heat pump capacity line</em>) van de warmtepomp.</p>
+<p><img alt="gecombineerd systeem karakteristiek" src="../static/articles/heat-pump/W55_characteristic.png" /></p>
+<p>De warmtebelastingskarakteristiek van het gebouw en de verwarmingscapaciteitskarakteristiek van de warmtepomp snijden elkaar in het zgn. <strong>bivalentiepunt</strong> (warmtepompbalanspunt). In de grafiek hierboven situeert het bivalentiepunt zich bij 2,43 °C. In dat punt stemt de verwarmingscapaciteit van de warmtepomp overeen met de warmtebehoefte van het gebouw. Is de buitentemperatuur hoger dan de bivalentietemperatuur, dan is de verwarmingscapaciteit van de warmtepomp groter dan de warmtebehoefte van het gebouw en de warmtepomp zal onder deelbelasting werken (<em>part load performance</em>). Is de buitentemperatuur lager dan de bivalentietemperatuur, dan beschikt de warmtepomp over onvoldoende verwarmingscapaciteit om te voldoen aan de warmtebehoefte van het gebouw. Onder die omstandigheid moet een extra verwarmingsbron, veelal een elektrische verwarmingsweerstand, bijspringen om aan de warmtebehoefte van het gebouw te kunnen voldoen en zodoende de gewenste binnentemperatuur in het gebouw te kunnen handhaven.</p>
+<h2 id="raming-van-het-energieverbruik-met-de-binmethode">Raming van het energieverbruik met de binmethode</h2>
+<p>Om nu het energieverbruik van de warmtepomp te kunnen ramen, moet men vooreerst het (mogelijk) verloop van de buitentemperatuur gedurende het verwarmingsseizoen kennen.  Men kan dit bv. terugvinden in de meteorologische database van <a href="http://re.jrc.ec.europa.eu/pvgis.html">PVGIS 5</a> die door de Europese Commissie beheerd wordt.  Van zowat elke  geografische locatie kan men meteorologische data downloaden die betrekking heeft op een zgn. <em>'Typisch Meteorologisch Jaar'</em> (<em>TMY</em>). Zo'n jaar wordt statistisch samengesteld door <em>typische</em> maanden te selecteren uit 10 opeenvolgende jaren (bv. van 2007 t.e.m. 2016). Het ter beschikking gestelde <em>csv</em>-databestand bevat voor elk uur van de dag een dataset waarin o.m. de buitentemperatuur is opgenomen.</p>
+<p>Om het energieverbruik van de warmtepomp te kunnen ramen, moet tevens het verloop van de COP van de warmtepomp i.f.v. de buitentemperatuur zijn gekend. De COP of prestatiecoëfficiënt van de warmtepomp is de verhouding van de geleverde verwarmingscapaciteit op het toegevoerd elektrisch vermogen. De COP is derhalve een relatieve maat voor de hoeveelheid elektrisch vermogen dat de warmtepomp zal verbruiken om een zekere verwarmingscapaciteit te realiseren. In de prestatietabellen van een warmtepomp wordt de stationaire COP opgegeven die de warmtepomp behaalt bij verschillende combinaties van luchtintredetemperaturen aan de ingang van de verdamper van de warmtepomp (dit is de buitentemperatuur in het geval van een lucht/water-warmtepomp) en welbepaalde wateruittredetemperaturen aan de uitgang van de condensor van de warmtepomp (dit zijn tevens de watervertrektemperaturen van de verwarmingsinstallatie).</p>
+<p>Het computerprogramma gaat voor een zekere buitentemperatuur en dit m.b.v. van de warmtebelastingskarakteristiek van het gebouw na welke warmtevermogen het gebouw vereist. Indien dit thermisch vermogen <span><span class="MathJax_Preview">{{Q'}_{bel}}</span><script type="math/tex">{{Q'}_{bel}}</script></span> kleiner dan of gelijk is aan de verwarmingscapaciteit <span><span class="MathJax_Preview">{{Q'}_{wp}}</span><script type="math/tex">{{Q'}_{wp}}</script></span> van de warmtepomp, die het computerprogramma m.b.v. de verwarmingscapaciteitskarakteristiek van de warmtepomp bepaalt, dan volgt het door de warmtepomp opgenomen elektrisch vermogen <span><span class="MathJax_Preview">{{W'}_{wp}}</span><script type="math/tex">{{W'}_{wp}}</script></span> uit: </p>
+<div>
+<div class="MathJax_Preview">
+{W'_{wp}} = \frac{{{{Q'}_{bel}}}}{{COP}}
+</div>
+<script type="math/tex; mode=display">
+{W'_{wp}} = \frac{{{{Q'}_{bel}}}}{{COP}}
+</script>
+</div>
+<p>Indien de warmtebelasting <span><span class="MathJax_Preview">{{Q'}_{bel}}</span><script type="math/tex">{{Q'}_{bel}}</script></span> groter is dan de verwarmingscapaciteit <span><span class="MathJax_Preview">{{Q'}_{wp}}</span><script type="math/tex">{{Q'}_{wp}}</script></span> van de warmtepomp, dan volgt het door de warmtepomp opgenomen elektrisch vermogen <span><span class="MathJax_Preview">{{W'}_{wp}}</span><script type="math/tex">{{W'}_{wp}}</script></span> uit:</p>
+<div>
+<div class="MathJax_Preview">
+{W'_{wp}} = \frac{{{{Q'}_{wp}}}}{{COP}}
+</div>
+<script type="math/tex; mode=display">
+{W'_{wp}} = \frac{{{{Q'}_{wp}}}}{{COP}}
+</script>
+</div>
+<p>Het vermogen <span><span class="MathJax_Preview">{{W'}_{bv}}</span><script type="math/tex">{{W'}_{bv}}</script></span> dat de elektrische bijverwarming dan moet leveren om het tekort aan te vullen, volgt uit:</p>
+<div>
+<div class="MathJax_Preview">
+{W'_{bv}} = {Q'_{bel}} - {Q'_{wp}}
+</div>
+<script type="math/tex; mode=display">
+{W'_{bv}} = {Q'_{bel}} - {Q'_{wp}}
+</script>
+</div>
+<p>Onder deelbelasting van de warmtepomp (daggemiddelde buitentemperatuur &gt; bivalentietemperatuur) is in de raming van het energieverbruik door het computerprogramma aangenomen dat de COP van de warmtepomp gelijk blijft aan de COP onder stationaire bedrijfscondities cf. de prestatietabellen. Er is m.a.w. geen degradatiecoëfficiënt in rekening gebracht (cf. EN 14825). In het geval van een inverter aangedreven warmtepomp zal in de regel de COP verbeteren naarmate de warmtepomp meer in deellastbedrijf werkt. Echter, van zodra het minimumtoerental (de minimumfrequentie van de inverter) wordt bereikt, vertoont ook de inverter aangedreven warmtepomp een sterke terugval van de COP, omdat de compressor van de warmtepomp vanaf het minimumtoerental cyclisch aan- en uitgeschakeld zal worden om de verwarmingscapaciteit van de warmtepomp te kunnen matchen met de warmtevraag van het gebouw (zoniet zou de watervertrektemperatuur te hoog oplopen). Derhalve, het idee om een lucht/water-warmtepomp te selecteren op basis van de piekwarmtebelasting van het gebouw (d.i. de warmtebelasting bij de minimaal mogelijke buitentemperatuur die volgt uit de warmteverliesberekening), teneinde een (elektrische) bijverwarming voor de winterdagen achterwege te kunnen laten, kan een averechts effect hebben in de tussenseizoenen lente en herfst, wanneer de warmtebelasting van het gebouw laag is in verhouding tot de piekwarmtebelasting.<br>Aangezien de technische documentatie van de beschouwde warmtepomp geen informatie verschaft om de COP (of <em>part load factor</em>, PLF) van de warmtepomp onder deellast (of <em>part load ratio</em>, PLR) betrouwbaar te bepalen, is ervoor geopteerd de stationaire COP ook onder deellast aan te houden. Normaal gezien zal dit, mede met de aanname dat de watervertrektemperatuur continu op 55 °C wordt geregeld (geen weersafhankelijke watertemperatuurregeling), leiden tot een eerder conservatieve schatting van het energieverbruik.<br>Het energieverbruik van afzonderlijke circulatiepompen die het verwarmingswater naar de verwarmingslichamen (vloerverwarming, radiatoren en boiler) transporteren is niet mee in de raming van het energieverbruik opgenomen.</p>
+<p>Om finaal het energieverbruik te ramen is gebruik gemaakt van de binmethode. Van elke dag in de stookseizoenmaanden van het <em>Typisch Meteorologisch Jaar</em> kan de computer de gemiddelde buitentemperatuur berekenen. De stookseizoenmaanden in onze contreien zijn januari, februari, maart, april, oktober, november en december (212 dagen). Het temperatuurbereik tussen de minimale buitentemperatuur (de ontwerpbuitentemperatuur) en de basistemperatuur van het gebouw wordt in intervallen (<em>bins</em>) onderverdeeld. Vervolgens kan de computer tellen hoeveel dagen van het stookseizoen de daggemiddelde buitentemperatuur zich in een bepaalde <em>bin</em> bevindt.<br>Met (1) de gemiddelde temperatuur van elke <em>bin</em>, (2) de warmtebelastingskarakteristiek van het gebouw, (3) de verwarmingscapaciteitskarakteristiek en (4) de COP van de warmtepomp kan het computerprogramma het thermisch en elektrisch energieverbruik van het gebouw resp. de warmtepomp in elke <em>bin</em> berekenen. Zo volgt het elektrisch energieverbruik van de warmtepomp in een bin uit:</p>
+<div>
+<div class="MathJax_Preview">
+{W_{wp}}\left[ {kWh} \right] = {W'_{wp}}\left[ W \right] \times \left( {aantal\,dagen} \right) \times 24\left[ h \right]
+</div>
+<script type="math/tex; mode=display">
+{W_{wp}}\left[ {kWh} \right] = {W'_{wp}}\left[ W \right] \times \left( {aantal\,dagen} \right) \times 24\left[ h \right]
+</script>
+</div>
+<p>Voor buitentemperaturen die lager zijn dan de bivalentietemperatuur zal de elektrische bijverwarming het tekort van de warmtepomp nog moeten aanvullen (d.m.v. aan/uit-regeling van de elektrische verwarmingsweerstanden).</p>
+<p>De bintabel die het computerprogramma heeft berekend, wordt hieronder getoond en heeft betrekking op een constante watervertrektemperatuur van 55 °C. </p>
+<ul>
+<li>De kolom <em># dagen</em> vermeldt het aantal dagen dat de daggemiddelde buitentemperatuur zich in een bepaalde temperatuurbin bevindt.</li>
+<li><em>P therm.</em> is het thermisch vermogen dat het gebouw bij de gemiddelde bintemperatuur behoeft</li>
+<li><em>E therm.</em> is de thermische energie over het stookseizoen dat het gebouw bij de gemiddelde bintemperatuur behoeft</li>
+<li><em>COP</em> is de stationaire COP van de warmtepomp bij de  gemiddelde bintemperatuur</li>
+<li><em>P elek. WP</em> is het elektrisch vermogen dat de warmtepomp opneemt bij de gemiddelde bintemperatuur</li>
+<li><em>E elek. WP</em> is elektrisch energieverbruik van de warmtepomp over het stookseizoen bij de gemiddelde bintemperatuur</li>
+<li><em>P elek. BV</em> is het elektrisch vermogen dat de bijverwarming toevoert bij de gemiddelde bintemperatuur</li>
+<li><em>E elek. BV</em> is het elektrisch energieverbruik van de bijverwarming over het stookseizoen bij de gemiddelde bintemperatuur.</li>
+</ul>
+<table>
+    <tr>
+      <th>bin</th>
+      <th># dagen</th>
+      <th>P therm. [kW]</th>
+      <th>E therm. [kWh]</th>
+      <th>COP</th>
+      <th>P elek. WP [kW]</th>
+      <th>E elek. WP [kWh]</th>
+      <th>P elek. BV [kW]</th>
+      <th>E elek. BV [kWh]</th>
+    </tr>
+    <tr>
+      <td>(-9.0, -7.0]</td>
+      <td>0</td>
+      <td>11.411356</td>
+      <td>0.000000</td>
+      <td>1.667220</td>
+      <td>4.210464</td>
+      <td>0.000000</td>
+      <td>4.391586</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <td>(-7.0, -5.0]</td>
+      <td>0</td>
+      <td>10.530688</td>
+      <td>0.000000</td>
+      <td>1.692762</td>
+      <td>4.121754</td>
+      <td>0.000000</td>
+      <td>3.553538</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <td>(-5.0, -3.0]</td>
+      <td>0</td>
+      <td>9.650019</td>
+      <td>0.000000</td>
+      <td>1.727718</td>
+      <td>4.012454</td>
+      <td>0.000000</td>
+      <td>2.717629</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <td>(-3.0, -1.0]</td>
+      <td>8</td>
+      <td>8.769351</td>
+      <td>1683.715314</td>
+      <td>1.765620</td>
+      <td>3.900260</td>
+      <td>748.849944</td>
+      <td>1.882973</td>
+      <td>361.530740</td>
+    </tr>
+    <tr>
+      <td>(-1.0, 1.0]</td>
+      <td>6</td>
+      <td>7.888682</td>
+      <td>1135.970210</td>
+      <td>1.800000</td>
+      <td>3.800000</td>
+      <td>547.200000</td>
+      <td>1.048682</td>
+      <td>151.010210</td>
+    </tr>
+    <tr>
+      <td>(1.0, 3.0]</td>
+      <td>19</td>
+      <td>7.008013</td>
+      <td>3195.654122</td>
+      <td>1.866412</td>
+      <td>3.651314</td>
+      <td>1664.999054</td>
+      <td>0.193159</td>
+      <td>88.080428</td>
+    </tr>
+    <tr>
+      <td>(3.0, 5.0]</td>
+      <td>23</td>
+      <td>6.127345</td>
+      <td>3382.294353</td>
+      <td>2.031802</td>
+      <td>3.015719</td>
+      <td>1664.676783</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <td>(5.0, 7.0]</td>
+      <td>36</td>
+      <td>5.246676</td>
+      <td>4533.128286</td>
+      <td>2.246865</td>
+      <td>2.335110</td>
+      <td>2017.534695</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <td>(7.0, 9.0]</td>
+      <td>39</td>
+      <td>4.366008</td>
+      <td>4086.583181</td>
+      <td>2.455098</td>
+      <td>1.778343</td>
+      <td>1664.529471</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <td>(9.0, 11.0]</td>
+      <td>29</td>
+      <td>3.485339</td>
+      <td>2425.796005</td>
+      <td>2.600000</td>
+      <td>1.340515</td>
+      <td>932.998463</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <td>(11.0, 13.0]</td>
+      <td>30</td>
+      <td>2.604671</td>
+      <td>1875.362762</td>
+      <td>2.690000</td>
+      <td>0.968279</td>
+      <td>697.160878</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <td>(13.0, 15.0]</td>
+      <td>13</td>
+      <td>1.724002</td>
+      <td>537.888598</td>
+      <td>2.790000</td>
+      <td>0.617922</td>
+      <td>192.791612</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <td>(15.0, 17.0]</td>
+      <td>7</td>
+      <td>0.843333</td>
+      <td>141.680000</td>
+      <td>2.890000</td>
+      <td>0.291811</td>
+      <td>49.024221</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+</table>
+
+<p>De som van de energiehoeveelheden in elke bin levert de totale energiehoeveelheden over het stookseizoen op:</p>
+<ul>
+<li>Thermisch energieverbruik van het gebouw inclusief SWW-bereiding = 22.998 kWh</li>
+<li>Elektrisch energieverbruik van de warmtepomp om de thermische energie te leveren = 10.180 kWh</li>
+<li>Elektrisch energieverbruik van de bijverwarming = 601 kWh</li>
+</ul>
+<p>Het staafdiagram hieronder geeft de resultaten grafisch weer. Voor elke bin zien we de thermische energiehoeveelheid die het gebouw vraagt (oranje balk), de elektrische energiehoeveelheid die de warmtepomp verbruikt om deze thermische energie te kunnen leveren (groene balk) en de elektrische energiehoeveelheid die de bijverwarming moet leveren wanneer de warmtepomp alleen niet aan de warmtevraag kan voldoen (rode balk).
+<img alt="grafiek bins" src="../static/articles/heat-pump/W55_graph.png" /></p>
+<h2 id="verfijning-van-de-binmethode">Verfijning van de binmethode</h2>
+<p>De bovenstaande versie van de bin-methode kan nog verfijnd worden. Een dag kan in blokken worden opgedeeld, bv. een blok van 0u00 tot 4u00, een blok van 4u00 tot 8u00, … en tot slot een blok van 20u00 tot 24u00. Aan elk blok kunnen we nu ook een verschillend regime van het warmtepompsysteem toekennen. Bv. tussen 4u00 en 8u00 en tussen 16u00 en 20u00 is SWW-bereiding actief en de watervertrektemperatuur wordt in die perioden ingesteld op 55 °C. In de overige dagblokken is er enkel ruimteverwarming actief en de watervertrektemperatuur wordt in die uren verlaagd naar 35 °C (vloerverwarming). </p>
+<p>Nu kan de computer in de ingevoerde meteodata, die uurlijkse datasets over een gans stookseizoen bevat, tellen hoeveel keer (hoeveel uur) de buitentemperatuur in een welbepaald dagblok en in een welbepaald interval van de buitentemperatuur lag. Dit wordt voor elk dagblok en voor elk interval van de buitentemperatuur herhaald. De resultaten kan men voorstellen in een matrix. De kolom-indexen zijn de dagblokken en de rij-indexen zijn de temperatuurintervallen. Een cel van de matrix bevat het aantal uren dat de buitentemperatuur gedurende het stookseizoen in die bepaalde cel of <em>bin</em> vertoefde.</p>
+<p>Het gebruik van deze methode wordt in een <em>Jupyter Notebook</em> gedemonstreerd dat men <a href="../static/articles/heat-pump/heat_pump_02.html">hier</a> kan terugvinden. Voor elke grootheid (aantal uren, <em>P therm.</em>, <em>E therm.</em>, etc.) is er nu een aparte bin-matrix, zoals in de <em>Jupyter Notebook</em> wordt getoond. </p>
+<p>In de <em>Jupyter Notebook</em> is het jaarlijks energieverbruik geraamd van hetzelfde warmtepompsysteem als hierboven, met dit verschil dat tussen 4u00 en 8u00 en tussen 16u00 en 20u00 de SWW-bereiding actief is en de watervertrektemperatuur dan bedraagt 55 °C (W55). Gedurende de rest van de dag bedraagt de watervertrektemperatuur nu 35 °C (W35).</p>
+<p>Om het thermisch vermogen voor SWW-bereiding te bepalen is nu uitgegaan van een dagelijks warmwaterverbruik van 200 liter (4 personen x 50 liter per dag). Om die hoeveelheid water te verwarmen van 10 naar 55 °C over 2 dagblokken van telkens 4 uren is een gemiddeld vermogen van ca. 1,3 kW nodig (cf. parameter <code>Q_dhw_des</code>).</p>
+<p>Het computerprogramma bekomt met de verfijnde binmethode de volgende resultaten:</p>
+<ul>
+<li>Thermisch energieverbruik van het gebouw (inclusief SWW-bereiding) = 20.540 kWh</li>
+<li>Elektrisch energieverbruik van de warmtepomp om de thermische energie te leveren = 7.261 kWh</li>
+<li>Elektrisch energieverbruik van de bijverwarming = 601 kWh</li>
+</ul>
+<p>Het staafdiagram hieronder geeft de resultaten grafisch weer. Voor elke temperatuur<em>bin</em> zien we:</p>
+<ul>
+<li>de thermische energiehoeveelheid die het gebouw vraagt (gele balk) </li>
+<li>de thermische energiehoeveelheid die door de warmtepomp wordt geleverd (oranje balk) </li>
+<li>de thermische, tevens elektrische energiehoeveelheid die door de elektrische bijverwarming wordt geleverd (rode balk) (De COP van een elektrische verwarmingsweerstand is steeds gelijk aan 1: de elektrische energie wordt integraal in warmte omgezet)</li>
+<li>de elektrische energiehoeveelheid die de warmtepomp opneemt om thermische energie te kunnen leveren (groene balk)</li>
+</ul>
+<p><img alt="staafdiagram W35+W55" src="../static/articles/heat-pump/W35-W55_graph.png" /></p>
+<h2 id="impact-op-de-energiefactuur-luchtwater-warmtepomp-versus-aardgasketel">Impact op de energiefactuur: lucht/water-warmtepomp versus aardgasketel</h2>
+<p>De warmtepomp in het voorbeeld hierboven verbruikt jaarlijks 7.261 kWh elektriciteit. De elektrische bijverwarming verbruikt 601 kWh. Samen is dit 7.862 kWh.<br>De thermische energiebehoefte van het gebouw inclusief SWW-bereiding wordt op het niveau van de warmtepomp geraamd op 20.540 kWh (er werd een installatierendement van 90% in de raming in rekening gebracht). Dit levert voor de warmtepomp een seizoenprestatiefactor (SCOP) op van 2,6 (20.540 / 7.862), hetgeen een betrekkelijk goeie score is voor een lucht/water-warmtepomp die ook voor SWW-bereiding wordt ingezet.</p>
+<p>Zou aan de warmtebehoefte van het gebouw door een aardgasketel i.p.v. een lucht/water-warmtepomp worden voldaan, dan zou het aardgasverbruik rond 21.621 kWh kunnen liggen, indien naast het installatierendement bijkomend nog een ketelrendement van 95% wordt vooropgesteld .</p>
+<p>Eén kilowattuur elektriciteit uit het net kost BTW inclusief rond 30 eurocent. Eén kilowattuur aardgas kost BTW inclusief rond 5 eurocent. Elektriciteit kost dus 5 keer meer dan aardgas.</p>
+<p>Het elektriciteitsverbruik van 7.862 kWh impliceert een kostprijs van ca. 2.358,60 EUR.<br>Een aardgasverbruik van 21.621 kWh zou een kostprijs impliceren van ca. 1.081,00 EUR.</p>
+<p>Besluit: voor de energieconsument blijkt een elektrisch aangedreven lucht/water-warmtepomp een pak duurder uit te vallen dan een aardgasketel, tenminste zolang het elektriciteitstarief beduidend hoger blijft dan het aardgastarief.</p>
+    </div>
+
+        </div>
+
+        <div class="column right">
+            
+    
+        <div class="toc_layout">
+            <h2>Inhoudstafel</h2>
+            
+<ul>
+<li><a href="#raming-van-het-jaarlijks-energieverbruik-van-een-luchtwater-warmtepomp">RAMING VAN HET JAARLIJKS ENERGIEVERBRUIK VAN EEN LUCHT/WATER-WARMTEPOMP</a><ul>
+<li><a href="#gebouw-opstellen-van-de-warmtebelastingskarakteristiek">Gebouw: opstellen van de warmtebelastingskarakteristiek</a></li>
+<li><a href="#warmtepomp-opstellen-van-de-verwarmingscapaciteitskarakteristiek">Warmtepomp: opstellen van de verwarmingscapaciteitskarakteristiek</a></li>
+<li><a href="#bivalentiepunt-van-het-warmtepompsysteem">Bivalentiepunt van het warmtepompsysteem</a></li>
+<li><a href="#raming-van-het-energieverbruik-met-de-binmethode">Raming van het energieverbruik met de binmethode</a></li>
+<li><a href="#verfijning-van-de-binmethode">Verfijning van de binmethode</a></li>
+<li><a href="#impact-op-de-energiefactuur-luchtwater-warmtepomp-versus-aardgasketel">Impact op de energiefactuur: lucht/water-warmtepomp versus aardgasketel</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+    
+
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <p>
+    <i class='far fa-copyright'></i> Tom Christiaens 2019 |
+    Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a>
+    from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+</p>
+    </div>
+
+</body>
+</html>
