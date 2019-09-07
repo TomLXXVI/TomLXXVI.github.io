@@ -194,13 +194,25 @@ a:hover {
 /* -- table -- */
 .article table {
     border-collapse: collapse;
-    width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: max-content;
+    max-height: 500px;
+    overflow: auto;
+}
+
+.article th {
+    text-align: center;
+}
+
+.article td {
+    text-align: left;
 }
 
 .article th, td {
-    text-align: left;
     padding: 8px;
-    border-bottom: 1px solid #ddd;
+    border: 1px solid #ddd;
 }
 
 .article tr:nth-child(even) {background-color: #f2f2f2;}
@@ -216,32 +228,22 @@ a:hover {
 /* -- link -- */
 .article a {
     text-decoration: none;
-    color: #178bb5
+    color: #178bb5;
 }
 
 .article a:hover {
     text-decoration: underline;
 }
 
-/* -- article tag -- */
-a.tag {
-    text-decoration: none;
-    background-color: #000000;
-    color: #ffffff;
-    padding: 5px 10px;
-    text-align: center;
-    display: inline-block;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 0.85em;
-}
-
-a.tag:hover {
-    background-color: #ffa500;
-}
-
 /* -- hide the <div class="toc"> in the article html page -- */
 .toc {
     display: none;
+}
+
+.article code {
+    color: red;
+    background-color: #f2f2f2;
+    font-size: 1.2em;
 }
 
 /* ================================================================================================================== */
@@ -261,7 +263,6 @@ a.tag:hover {
     align-items: flex-start;
     padding: 20px;
     margin-bottom: 10px;
-    box-shadow: 10px 10px 5px grey;
 }
 
 #contact_header {
@@ -312,4 +313,20 @@ a.articles {
 
 a.articles:hover {
     text-decoration: underline overline;
+}
+
+/* -- article tag -- */
+a.tag {
+    text-decoration: none;
+    background-color: #000000;
+    color: #ffffff;
+    padding: 5px 10px;
+    text-align: center;
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.85em;
+}
+
+a.tag:hover {
+    background-color: #ffa500;
 }

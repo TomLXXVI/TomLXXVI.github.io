@@ -10,6 +10,14 @@
     <link rel="stylesheet" href="/static/css/styles.css">
     <link rel="stylesheet" href="/static/css/pygments.css">
     <script src="https://kit.fontawesome.com/49c5b2b09a.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js"></script>
+    <script>
+        MathJax.Hub.Config({
+            config: ["MMLorHTML.js"],
+            jax: ["input/TeX", "output/HTML-CSS", "output/NativeMML"],
+            extensions: ["MathMenu.js", "MathZoom.js"]
+        });
+    </script>
 </head>
 
 <body>
@@ -31,9 +39,9 @@
             <div class="dropdown-content">
                 <a href="/articles.html">Alle artikelen</a>
                 
-                    <a href="/tag/elektriciteit/">Artikelen over elektriciteit</a>
+                    <a href="/tag/HVAC/">Artikelen over HVAC</a>
                 
-                    <a href="/tag/zonnepanelen/">Artikelen over zonnepanelen</a>
+                    <a href="/tag/elektriciteit/">Artikelen over elektriciteit</a>
                 
             </div>
         </li>
@@ -305,13 +313,8 @@
 <td>0,1094540 €</td>
 </tr>
 <tr>
-<td>verbruik piekuren</td>
-<td>0,0637546 €</td>
-<td></td>
-</tr>
-<tr>
-<td>verbruik daluren</td>
-<td>0,0450416 €</td>
+<td>verbruik</td>
+<td>0,0543981 €</td>
 <td></td>
 </tr>
 <tr>
@@ -356,7 +359,7 @@
 </tr>
 <tr>
 <td>totaal incl. 21% BTW</td>
-<td><strong>0,3189326 €</strong></td>
+<td><strong>0,2531109 €</strong></td>
 <td>0,4918407 €</td>
 </tr>
 <tr>
@@ -366,27 +369,27 @@
 </tr>
 </tbody>
 </table>
-<p>De totale kostprijs per kWh inclusief BTW komt uit op bijna 0,32 EUR/kWh. De nettarieven nemen daarvan bijna de helft in beslag.</p>
-<p><strong>Uitgangspunt:</strong><br>Op basis van een (geschat) jaarverbruik van 3774 kWh (cf. supra), komt in mijn situatie de totale <u>verbruiksafhankelijke</u> kostprijs <u>zonder</u> zonnepanelen neer op jaarlijks 1.203,65 EUR (3774 kWh x 0,3189326 EUR/kWh).</p>
+<p>De totale kostprijs per kWh inclusief BTW komt uit op ca. 0,25 EUR/kWh. De nettarieven nemen daarvan meer dan de helft in beslag.</p>
+<p><strong>Uitgangspunt:</strong><br>Op basis van een (geschat) jaarverbruik van 3774 kWh (cf. supra), komt in mijn situatie de totale <u>verbruiksafhankelijke</u> kostprijs <u>zonder</u> zonnepanelen neer op jaarlijks 955,24 EUR (3774 kWh x 0,2531109 EUR/kWh).</p>
 <p><strong>A.</strong>  Indien ik zou opteren voor de hierboven besproken FV installatie zonder batterijopslagsysteem en met terugdraaiende energiemeter (de compensatieregeling), dan volgt dat:</p>
 <ul>
 <li>de verbruiksafhankelijke kosten op basis van het netto netverbruik 0,- EUR zouden bedragen, want het bekomen netto netverbruik is zeer duidelijk negatief: -2055 kWh (zie <em>Jupyter Notebook</em>  <a href="..\static\articles\fv-installatie\notebooks\03_energieanalyse.html">DEEL 3 | SCHATTING VAN DE ENERGIEOPBRENGST</a> onder <em>Analyseresultaat 3: Zelfvoorziening en Zelfconsumptie Zonder Batterijopslagsysteem</em>)</li>
 <li>het prosumententarief voor mij op vandaag 90,15 EUR/kW incl. 21% BTW zou kosten. Als de omvormer een nominaal vermogen van 5 kW bezit (cf. supra), komt dit uit op 450,75 EUR.</li>
 </ul>
-<p>Bijgevolg, onder optie A zou ik jaarlijks <strong>752,90 EUR</strong> kunnen besparen op mijn elektriciteitsfactuur (onder de assumptie dat de verbruiksonafhankelijke kosten niet zullen wijzigen ten opzichte van de situatie zonder zonnepanelen).</p>
+<p>Bijgevolg, onder optie A zou ik jaarlijks <strong>504,49 EUR</strong> kunnen besparen op mijn elektriciteitsfactuur (onder de assumptie dat de verbruiksonafhankelijke kosten niet zullen wijzigen ten opzichte van de situatie zonder zonnepanelen).</p>
 <p><strong>B.</strong>  Indien ik zou opteren voor de FV installatie zonder batterijopslagsysteem en zonder compensatieregeling (nettarieven worden aangerekend op de werkelijke afname i.p.v. het prosumententarief), dan volgt dat:</p>
 <ul>
 <li>de vergoeding voor het gebruik van het net op basis van de nettarieven uitkomt op 349,57 EUR, nl. 2265 kWh x 0,1543369 EUR/kWh.</li>
 <li>de overige verbruiksafhankelijke kosten zouden cf. supra op basis van het netto netverbruik blijven aangerekend worden. In mijn geval zou het negatieve netto netverbruik evenwel naar nul herleid worden, waardoor er geen andere verbruiksafhankelijke kosten zouden aangerekend worden.</li>
 </ul>
-<p>Bijgevolg, zou ik voor de optie B kiezen, dan zou ik tot <strong>854,08 EUR</strong> kunnen besparen op mijn energiefactuur.</p>
+<p>Bijgevolg, zou ik voor de optie B kiezen, dan zou ik tot <strong>605,67 EUR</strong> kunnen besparen op mijn energiefactuur.</p>
 <p><strong>C.</strong>  Indien ik zou opteren voor de FV installatie met batterijopslagsysteem en met terugdraaiende energiemeter (de compensatieregeling), dan zou mij dat evenveel voordeel opleveren als onder optie A hierboven, maar dan zou ik daarentegen wel met een hogere investeringskost worden geconfronteerd, gezien de aanschaf van het batterijopslagsysteem.</p>
 <p><strong>D.</strong>  Indien ik tot slot zou opteren voor de FV installatie met batterijopslagsysteem en zonder de compensatieregeling, dan volgt dat:</p>
 <ul>
 <li>de vergoeding voor het gebruik van het net op basis van de nettarieven uitkomt op 152,48 EUR, nl. 988 kWh x 0,1543369 EUR/kWh.</li>
 <li>overige verbruiksafhankelijke kosten niet zouden aangerekend worden, want het negatieve netto netverbruik wordt op nul gezet (cf. optie B).</li>
 </ul>
-<p>Bijgevolg, zou ik voor optie D gaan, dan zou mij dit een besparing tot <strong>1.052,17 EUR</strong> kunnen opleveren op mijn elektriciteitsfactuur.</p>
+<p>Bijgevolg, zou ik voor optie D gaan, dan zou mij dit een besparing tot <strong>802,76 EUR</strong> kunnen opleveren op mijn elektriciteitsfactuur.</p>
 <p>Optie D lijkt de beste keuze, maar men moet ook oog hebben voor de terugverdientijd van de investering waarmee men deze jaarlijkse besparing op de elektriciteitsfactuur wenst te behalen. Tot op heden zijn batterijopslagsystemen behoorlijk prijzig. Maar sinds 1 augustus 2019 tracht de Vlaamse Overheid batterijopslagsystemen een duwtje in de rug te geven met een <a href="https://www.vlaanderen.be/premie-voor-thuisbatterij-voor-zelf-opgewekte-energie">premie</a>.</p>
     </div>
 
