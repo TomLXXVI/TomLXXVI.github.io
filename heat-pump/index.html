@@ -355,7 +355,7 @@
 <h2 id="raming-van-het-energieverbruik-met-de-binmethode">Raming van het energieverbruik met de binmethode</h2>
 <p>Om nu het energieverbruik van de warmtepomp te kunnen ramen, moet men vooreerst het (mogelijk) verloop van de buitentemperatuur gedurende het verwarmingsseizoen kennen.  Men kan dit bv. terugvinden in de meteorologische database van <a href="http://re.jrc.ec.europa.eu/pvgis.html">PVGIS 5</a> die door de Europese Commissie beheerd wordt.  Van zowat elke  geografische locatie kan men meteorologische data downloaden die betrekking heeft op een zgn. <em>'Typisch Meteorologisch Jaar'</em> (<em>TMY</em>). Zo'n jaar wordt statistisch samengesteld door <em>typische</em> maanden te selecteren uit 10 opeenvolgende jaren (bv. van 2007 t.e.m. 2016). Het ter beschikking gestelde <em>csv</em>-databestand bevat voor elk uur van de dag een dataset waarin o.m. de buitentemperatuur is opgenomen.</p>
 <p>Om het energieverbruik van de warmtepomp te kunnen ramen, moet tevens het verloop van de COP van de warmtepomp i.f.v. de buitentemperatuur zijn gekend. De COP of prestatiecoëfficiënt van de warmtepomp is de verhouding van de geleverde verwarmingscapaciteit op het toegevoerd elektrisch vermogen. De COP is derhalve een relatieve maat voor de hoeveelheid elektrisch vermogen dat de warmtepomp zal verbruiken om een zekere verwarmingscapaciteit te realiseren. In de prestatietabellen van een warmtepomp wordt de stationaire COP opgegeven die de warmtepomp behaalt bij verschillende combinaties van luchtintredetemperaturen aan de ingang van de verdamper van de warmtepomp (dit is de buitentemperatuur in het geval van een lucht/water-warmtepomp) en welbepaalde wateruittredetemperaturen aan de uitgang van de condensor van de warmtepomp (dit zijn tevens de watervertrektemperaturen van de verwarmingsinstallatie).</p>
-<p>Het computerprogramma gaat voor een zekere buitentemperatuur en dit m.b.v. van de warmtebelastingskarakteristiek van het gebouw na welke warmtevermogen het gebouw vereist. Indien dit thermisch vermogen <span><span class="MathJax_Preview">{{Q'}_{bel}}</span><script type="math/tex">{{Q'}_{bel}}</script></span> kleiner dan of gelijk is aan de verwarmingscapaciteit <span><span class="MathJax_Preview">{{Q'}_{wp}}</span><script type="math/tex">{{Q'}_{wp}}</script></span> van de warmtepomp, die het computerprogramma m.b.v. de verwarmingscapaciteitskarakteristiek van de warmtepomp bepaalt, dan volgt het door de warmtepomp opgenomen elektrisch vermogen <span><span class="MathJax_Preview">{{W'}_{wp}}</span><script type="math/tex">{{W'}_{wp}}</script></span> uit: </p>
+<p>Het computerprogramma gaat voor een zekere buitentemperatuur, m.b.v. van de warmtebelastingskarakteristiek van het gebouw, na welke warmtevermogen het gebouw vereist. Indien dit thermisch vermogen <span><span class="MathJax_Preview">{Q'_{bel}}</span><script type="math/tex">{Q'_{bel}}</script></span> kleiner dan of gelijk is aan de verwarmingscapaciteit <span><span class="MathJax_Preview">{Q'_{wp}}</span><script type="math/tex">{Q'_{wp}}</script></span> van de warmtepomp, die het computerprogramma m.b.v. de verwarmingscapaciteitskarakteristiek van de warmtepomp bepaalt, dan volgt het door de warmtepomp opgenomen elektrisch vermogen <span><span class="MathJax_Preview">{W'_{wp}}</span><script type="math/tex">{W'_{wp}}</script></span> uit: </p>
 <div>
 <div class="MathJax_Preview">
 {W'_{wp}} = \frac{{{{Q'}_{bel}}}}{{COP}}
@@ -364,7 +364,7 @@
 {W'_{wp}} = \frac{{{{Q'}_{bel}}}}{{COP}}
 </script>
 </div>
-<p>Indien de warmtebelasting <span><span class="MathJax_Preview">{{Q'}_{bel}}</span><script type="math/tex">{{Q'}_{bel}}</script></span> groter is dan de verwarmingscapaciteit <span><span class="MathJax_Preview">{{Q'}_{wp}}</span><script type="math/tex">{{Q'}_{wp}}</script></span> van de warmtepomp, dan volgt het door de warmtepomp opgenomen elektrisch vermogen <span><span class="MathJax_Preview">{{W'}_{wp}}</span><script type="math/tex">{{W'}_{wp}}</script></span> uit:</p>
+<p>Indien echter de warmtebelasting <span><span class="MathJax_Preview">{Q'_{bel}}</span><script type="math/tex">{Q'_{bel}}</script></span> groter is dan de verwarmingscapaciteit <span><span class="MathJax_Preview">{Q'_{wp}}</span><script type="math/tex">{Q'_{wp}}</script></span> van de warmtepomp, dan volgt het door de warmtepomp opgenomen elektrisch vermogen <span><span class="MathJax_Preview">{{W'}_{wp}}</span><script type="math/tex">{{W'}_{wp}}</script></span> uit:</p>
 <div>
 <div class="MathJax_Preview">
 {W'_{wp}} = \frac{{{{Q'}_{wp}}}}{{COP}}
@@ -373,7 +373,7 @@
 {W'_{wp}} = \frac{{{{Q'}_{wp}}}}{{COP}}
 </script>
 </div>
-<p>Het vermogen <span><span class="MathJax_Preview">{{W'}_{bv}}</span><script type="math/tex">{{W'}_{bv}}</script></span> dat de elektrische bijverwarming dan moet leveren om het tekort aan te vullen, volgt uit:</p>
+<p>Het elektrisch vermogen <span><span class="MathJax_Preview">{W'_{bv}}</span><script type="math/tex">{W'_{bv}}</script></span> dat de bijverwarming dan moet leveren om het verwarmingscapaciteitstekort van de warmtepomp aan te vullen, volgt uit:</p>
 <div>
 <div class="MathJax_Preview">
 {W'_{bv}} = {Q'_{bel}} - {Q'_{wp}}
@@ -591,8 +591,8 @@
 <p><img alt="staafdiagram W35+W55" src="../static/articles/heat-pump/W35-W55_graph.png" /></p>
 <h2 id="impact-op-de-energiefactuur-luchtwater-warmtepomp-versus-aardgasketel">Impact op de energiefactuur: lucht/water-warmtepomp versus aardgasketel</h2>
 <p>De warmtepomp in het voorbeeld hierboven verbruikt jaarlijks 7.261 kWh elektriciteit. De elektrische bijverwarming verbruikt 601 kWh. Samen is dit 7.862 kWh.<br>De thermische energiebehoefte van het gebouw inclusief SWW-bereiding wordt op het niveau van de warmtepomp geraamd op 20.540 kWh (er werd een installatierendement van 90% in de raming in rekening gebracht). Dit levert voor de warmtepomp een seizoenprestatiefactor (SCOP) op van 2,6 (20.540 / 7.862), hetgeen een betrekkelijk goeie score is voor een lucht/water-warmtepomp die ook voor SWW-bereiding wordt ingezet.</p>
-<p>Zou aan de warmtebehoefte van het gebouw door een aardgasketel i.p.v. een lucht/water-warmtepomp worden voldaan, dan zou het aardgasverbruik rond 21.621 kWh kunnen liggen, indien naast het installatierendement bijkomend nog een ketelrendement van 95% wordt vooropgesteld .</p>
-<p>Eén kilowattuur elektriciteit uit het net kost BTW inclusief rond 30 eurocent. Eén kilowattuur aardgas kost BTW inclusief rond 5 eurocent. Elektriciteit kost dus 5 keer meer dan aardgas.</p>
+<p>Zou aan de warmtebehoefte van het gebouw door een aardgasketel i.p.v. een lucht/water-warmtepomp worden voldaan, dan zou het aardgasverbruik rond 21.621 kWh kunnen liggen, indien naast het installatierendement nog een ketelrendement van 95% wordt vooropgesteld .</p>
+<p>Eén kilowattuur elektriciteit uit het net kost BTW inclusief rond 25 eurocent. Eén kilowattuur aardgas kost BTW inclusief rond 5 eurocent. Elektriciteit kost dus 5 keer meer dan aardgas.</p>
 <p>Het elektriciteitsverbruik van 7.862 kWh impliceert een kostprijs van ca. 2.358,60 EUR.<br>Een aardgasverbruik van 21.621 kWh zou een kostprijs impliceren van ca. 1.081,00 EUR.</p>
 <p>Besluit: voor de energieconsument blijkt een elektrisch aangedreven lucht/water-warmtepomp een pak duurder uit te vallen dan een aardgasketel, tenminste zolang het elektriciteitstarief beduidend hoger blijft dan het aardgastarief.</p>
     </div>
