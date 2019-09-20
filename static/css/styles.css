@@ -24,6 +24,8 @@ body {
 
 .column.left {
     flex: 25%;
+    background: url("../images/left2.png");
+    background-size: cover;
 }
 
 .column.center {
@@ -35,6 +37,8 @@ body {
 .column.right {
     flex: 25%;
     overflow: auto;
+    background: url("../images/right2.png");
+    background-size: cover;
 }
 
 /* -- small screens -- */
@@ -59,7 +63,6 @@ body {
 .header {
     padding: 15px 0;
     background-image: linear-gradient(to right, #126887, #33b5e5);
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #ffffff;
 }
 
