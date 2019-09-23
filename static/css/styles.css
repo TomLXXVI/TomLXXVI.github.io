@@ -185,6 +185,20 @@ a:hover {
     text-decoration: underline;
 }
 
+div.collage_top {
+    width: 100%;
+    height: 200px;
+    background: url("../images/collage/collage_01.png") no-repeat center;
+    background-size: cover;
+}
+
+div.collage_bottom {
+    width: 100%;
+    height: 200px;
+    background: url("../images/collage/collage_02.png") no-repeat center;
+    background-size: cover;
+}
+
 /* ================================================================================================================== */
 /* -- ARTICLE LAYOUT -- */
 
@@ -252,20 +266,28 @@ a:hover {
 /* ================================================================================================================== */
 /* -- CONTACT PAGE LAYOUT -- */
 
-.contact {
+div.contact_page {
     display: flex;
-    justify-content: space-around;
     flex-wrap: wrap;
+    height: 100%;
+    align-content: space-between;
 }
 
-.contact div {
-    border: 2px solid black;
-    border-radius: 25px;
+div.contacts {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 20px;
+}
+
+div.contact {
+    border: 1px solid black;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     padding: 20px;
-    margin-bottom: 10px;
 }
 
 #contact_header {
@@ -332,4 +354,31 @@ a.tag {
 
 a.tag:hover {
     background-color: #ffa500;
+}
+
+/* ================================================================================================================== */
+/* -- INDEX PAGE LAYOUT -- */
+div.intro {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background: url("../images/collage/collage_16.jpg") no-repeat center;
+    background-size: cover;
+}
+
+div.animated {
+    width: 100px;
+    height: 100px;
+    animation: owl 5s ease-in-out 1s infinite alternate;
+    display: flex;
+    justify-content: center;
+}
+
+@keyframes owl {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
 }
