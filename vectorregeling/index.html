@@ -1,0 +1,589 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>IbC - VECTORAANDRIJVING VAN DE INDUCTIEMOTOR</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="/static/logo/logo.ico">
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="/static/css/pygments.css">
+    <script src="https://kit.fontawesome.com/49c5b2b09a.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js"></script>
+    <script>
+        MathJax.Hub.Config({
+            config: ["MMLorHTML.js"],
+            jax: ["input/TeX", "output/HTML-CSS", "output/NativeMML"],
+            extensions: ["MathMenu.js", "MathZoom.js"]
+        });
+    </script>
+</head>
+
+<body>
+    <div class="header">
+        <div id="header">
+    <a href="/index.html"><img src="/static/logo/logo.png" alt="logo"></a>
+    <h1>Ingenieursbureau Christiaens</h1>
+</div>
+    </div>
+
+    <div class="row">
+
+        <div class="column left">
+            
+    <ul class="navbar">
+        <li><a class="navbar" href="/about.html">Over ons en deze website</a></li>
+        <li><a class="navbar" href="/contact_us.html">Ons contacteren</a></li>
+        <li><a class="navbar" href="/index_.htm">Website analyse verkeersongevallen</a></li>
+        <li class="dropdown">
+            <a class="dropbtn" href="#">Leesartikelen</a>
+            <div class="dropdown-content">
+                <a href="/articles.html">Alle artikelen</a>
+                
+                    <a href="/tag/HVAC/">Artikelen over HVAC</a>
+                
+                    <a href="/tag/elektriciteit/">Artikelen over elektriciteit</a>
+                
+            </div>
+        </li>
+    </ul>
+
+        </div>
+
+        <div class="column center">
+            
+    <div class="article">
+        <div class="toc">
+<ul>
+<li><a href="#vectoraandrijving-van-de-driefasige-inductiemotor">VECTORAANDRIJVING VAN DE DRIEFASIGE INDUCTIEMOTOR</a><ul>
+<li><a href="#1-het-dynamisch-driefasig-model-van-de-inductiemotor">1. Het dynamisch driefasig model van de inductiemotor</a></li>
+<li><a href="#2-dq-transformatie">2. dq-Transformatie</a></li>
+<li><a href="#3-het-dynamisch-dq-model-van-de-inductiemotor">3. Het dynamisch dq-model van de inductiemotor</a><ul>
+<li><a href="#31-stator-en-rotorspanning-in-het-dq-referentiestelsel-met-arbitraire-referentiehoeksnelheid">3.1 Stator- en rotorspanning in het (d,q)-referentiestelsel met arbitraire referentiehoeksnelheid ω</a></li>
+<li><a href="#32-gekoppelde-stator-en-rotorflux-in-het-dq-referentiestelsel-met-arbitraire-referentiehoeksnelheid">3.2 Gekoppelde stator- en rotorflux in het (d,q)-referentiestelsel met arbitraire referentiehoeksnelheid ω</a></li>
+<li><a href="#33-elektromechanisch-vermogen-en-koppel-in-het-dq-referentiestelsel-met-arbitraire-referentiehoeksnelheid">3.3 Elektromechanisch vermogen en koppel in het (d,q)-referentiestelsel met arbitraire referentiehoeksnelheid ω</a></li>
+</ul>
+</li>
+<li><a href="#4-dynamische-simulatie-van-de-directe-aanzet-van-een-inductiemotor">4. Dynamische simulatie van de directe aanzet van een inductiemotor</a></li>
+<li><a href="#5-het-principe-van-vectorregeling">5. Het principe van vectorregeling</a><ul>
+<li><a href="#51-verband-tussen-de-rotorflux-en-de-directe-component-van-de-statorstroom">5.1 Verband tussen de rotorflux en de directe component van de statorstroom</a></li>
+<li><a href="#52-verband-tussen-het-elektromechanisch-koppel-en-de-q-component-van-de-statorstroom">5.2 Verband tussen het elektromechanisch koppel en de q-component van de statorstroom</a></li>
+</ul>
+</li>
+<li><a href="#6-blokschema-van-de-vectorregelaar">6. Blokschema van de vectorregelaar</a></li>
+<li><a href="#7-dynamische-simulatie-van-de-aanzet-van-een-inductiemotor-mbv-directe-vectorregeling-softstart">7. Dynamische simulatie van de aanzet van een inductiemotor m.b.v. directe vectorregeling (softstart)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="vectoraandrijving-van-de-driefasige-inductiemotor">VECTORAANDRIJVING VAN DE DRIEFASIGE INDUCTIEMOTOR</h1>
+<p>In dit artikel wordt de theorie over de werking van de <strong>directe vectorregeling</strong> van een inductiemotor voorgesteld. De werking van de directe vectorregeling steunt heel erg op het wiskundig dynamisch model van de inductiemotor en op de dq-transformatie. Om de werking van de vectorregeling te kunnen uitleggen, is het bijgevolg vooreerst nodig om het dynamisch model van de inductiemotor en het gebruik van de dq-transformatie te overlopen.</p>
+<h2 id="1-het-dynamisch-driefasig-model-van-de-inductiemotor">1. Het dynamisch driefasig model van de inductiemotor</h2>
+<p>Wanneer een symmetrische, gebalanceerde driefasige spanning wordt aangelegd aan de statorklemmen van de inductiemotor, zal een stroom vloeien door de driefasige statorwikkeling van de inductiemotor. “Symmetrisch” houdt in dat de drie componenten van de driefasige spanning of stroom onderling 120° in fase verschoven zijn. “Gebalanceerd” of “evenwichtig” houdt in dat de som van de ogenblikkelijke waarden van de drie componenten steeds nul is.
+De stroom in elk van de drie statorfasen doet een roterend magnetisch veld ontstaan: het statordraaiveld. Het statordraaiveld is een ronddraaiende sinusvormige golf van magnetische flux die zich koppelt met zowel de stator- als de rotorfasespoelen.
+Het statordraaiveld induceert in het rotorcircuit driefasige spanningen en stromen, die op hun beurt ook weer een magnetisch draaiveld veroorzaken: het rotordraaiveld.
+Het is de interactie van het stator- en rotordraaiveld die verantwoordelijk is voor de motorwerking. Motorwerking houdt in dat elektrisch vermogen (spanning en stroom) wordt omgezet in mechanisch vermogen (koppel en hoeksnelheid of toerental).</p>
+<p>Een driefasige inductiemotor kan op abstract niveau in essentie worden gereduceerd tot drie fasespoelen in de stator en drie fasespoelen in de rotor die ruimtelijk 120° t.o.v. elkaar verdraaid zijn (zie figuur).
+<img alt="stator-rotor" src="../static/articles/vectorregeling/images/stator-rotor.png" /></p>
+<p>De gekleurde pijlen duiden de magnetische assen (centerlijnen) van de stator- en rotorfasespoelen aan. Wanneer de rotor draait, draaien de magnetische assen van de rotorspoelen t.o.v. de vaste statorspoelen. De positie van de rotor op een tijdstip <em>t</em> wordt eenduidig bepaald door de hoek <em>ϑ<sub>r</sub></em> tussen de vaste magnetische as van statorspoel <em>asas'</em> en de roterende magnetische as van de rotorspoel <em>arar'</em>.  </p>
+<p>In het dynamisch model van de inductiemotor wordt voor elk van de drie fasespoelen van de stator en voor elk van de drie fasespoelen van de rotor de relatie vastgelegd tussen de fasespanning, de fasestroom en de aan de fasespoel gekoppelde magnetische flux. Dit zijn de magnetische veldlijnen die als het ware door de spoelkern stromen en in de spoelwindingen spanningen induceren.</p>
+<p>Gekoppelde flux wordt gerelateerd aan de stroom die haar veroorzaakt via een inductiecoëfficiënt. De magnetische flux die zich koppelt met een zekere fasespoel is afkomstig van zes stromen: drie statorfasestromen en drie rotorfasestromen. Als dusdanig kunnen per fase ook zes inductiecoëfficiënten worden onderscheiden. In matrixvorm wordt dit bondig als volgt genoteerd voor de stator:</p>
+<div>
+<div class="MathJax_Preview">
+\left[ {{\lambda _{abc,s}}} \right] = \left[ {{L_s}} \right] \cdot \left[ {{i_{abc,s}}} \right] + \left[ {{{L'}_{sr}}} \right] \cdot \left[ {{{i'}_{abc,r}}} \right]
+</div>
+<script type="math/tex; mode=display">
+\left[ {{\lambda _{abc,s}}} \right] = \left[ {{L_s}} \right] \cdot \left[ {{i_{abc,s}}} \right] + \left[ {{{L'}_{sr}}} \right] \cdot \left[ {{{i'}_{abc,r}}} \right]
+</script>
+</div>
+<ul>
+<li><em>λ</em> = gekoppelde flux (uitgedrukt als aantal Weber-windingen)</li>
+<li><em>L</em> = inductiecoëfficiënt (eenheid Henry, H)</li>
+<li><em>i</em> = stroom (eenheid Ampère, A)</li>
+</ul>
+<p>De subscripten <em>a</em>, <em>b</em> en <em>c</em> refereren aan de drie fasen van de driefasige machine. Het subscript <em>s</em> refereert aan de stator en het subscript <em>r</em> refereert aan de rotor.<br>De matrix [<em>λ<sub>abc,s</sub></em>] (de gekoppelde flux aan elk van de drie statorfasen), de matrix [<em>i<sub>abc,s</sub></em>] (de drie statorfasestromen) en de matrix [<em>i'<sub>abc,r</sub></em>] (de drie rotorfasestromen) zijn 3x1-matrices (of kolomvectoren bestaande uit drie elementen).<br>De matrices [<em>L<sub>s</sub></em>] en [<em>L'<sub>sr</sub></em>] zijn 3x3-matrices. De matrix [<em>L<sub>s</sub></em>] bevat de inductiecoëfficiënten die de drie statorstromen koppelen aan de resp. flux die zij veroorzaken in elke statorspoel. De matrix [<em>L'<sub>sr</sub></em>] bevat de inductiecoëfficiënten die de drie rotorstromen koppelen aan de resp. flux die zij veroorzaken in elke statorspoel. Het accent-teken duidt aan dat de rotorfasegrootheden op de stator zijn betrokken.<br>Op analoge wijze geldt voor de gekoppelde fluxen van de rotor (betrokken op de stator):</p>
+<div>
+<div class="MathJax_Preview">
+\left[ {{{\lambda '}_{abc,r}}} \right] = {\left[ {{{L'}_{sr}}} \right]^T} \cdot \left[ {{i_{abc,s}}} \right] + \left[ {{{L'}_r}} \right] \cdot \left[ {{{i'}_{abc,r}}} \right]
+</div>
+<script type="math/tex; mode=display">
+\left[ {{{\lambda '}_{abc,r}}} \right] = {\left[ {{{L'}_{sr}}} \right]^T} \cdot \left[ {{i_{abc,s}}} \right] + \left[ {{{L'}_r}} \right] \cdot \left[ {{{i'}_{abc,r}}} \right]
+</script>
+</div>
+<p>Het superscript <em>T</em> duidt de "getransponeerde matrix" aan; dus de matrix [<em>L'<sub>sr</sub></em>] waarvan de kolommen en rijen zijn omgewisseld.</p>
+<p>Vermits de rotor draait t.o.v. de stilstaande stator is het aandeel van de rotorstromen in de gekoppelde flux van de statorfasespoelen afhankelijk van de hoekpositie <em>ϑ<sub>r</sub></em> van de rotor t.o.v. de stator. Dit impliceert dat de inductiecoëfficiënten in de matrix [<em>L'<sub>sr</sub></em>] veranderlijk zijn in de tijd.</p>
+<p>Voor de spanning tussen de uiteinden van een spoel geldt algemeen de relatie:</p>
+<div>
+<div class="MathJax_Preview">
+v = Ri + \frac{{d\lambda }}{{dt}}
+</div>
+<script type="math/tex; mode=display">
+v = Ri + \frac{{d\lambda }}{{dt}}
+</script>
+</div>
+<p><em>R</em> is de ohmse weerstand van de spoeldraad. <em>i</em> is de stroom die door de spoel vloeit en <em>dλ/dt</em> is het tempo waaraan de gekoppelde flux doorheen de spoel in de tijd varieert. Overeenkomstig de wet van Faraday induceert een veranderlijk magnetisch veld een elektromotorische kracht (e.m.k.) of spanning in de spoelwindingen.<br>Voor de drie statorfasespoelen samen kan dit bondig worden genoteerd als:</p>
+<div>
+<div class="MathJax_Preview">
+\left[ {{v_{abc,s}}} \right] = {R_s}\left[ {{i_{abc,s}}} \right] + \frac{d}{{dt}}\left[ {{\lambda _{abc,s}}} \right]
+</div>
+<script type="math/tex; mode=display">
+\left[ {{v_{abc,s}}} \right] = {R_s}\left[ {{i_{abc,s}}} \right] + \frac{d}{{dt}}\left[ {{\lambda _{abc,s}}} \right]
+</script>
+</div>
+<p>en voor de drie rotorfasespoelen wordt dit:</p>
+<div>
+<div class="MathJax_Preview">
+\left[ {{{v'}_{abc,r}}} \right] = {R'_r}\left[ {{{i'}_{abc,r}}} \right] + \frac{d}{{dt}}\left[ {{{\lambda '}_{abc,r}}} \right]
+</div>
+<script type="math/tex; mode=display">
+\left[ {{{v'}_{abc,r}}} \right] = {R'_r}\left[ {{{i'}_{abc,r}}} \right] + \frac{d}{{dt}}\left[ {{{\lambda '}_{abc,r}}} \right]
+</script>
+</div>
+<p>De spannings- en fluxvergelijkingen van de cilindrische stator en rotor zijn <a href="../static/articles/vectorregeling/pdf/abc-model.pdf" target="_blank">hier</a> volledig uitgeschreven. Voor de ontwikkeling van deze vergelijkingen kan bv. verwezen worden aan <em>Krause, P., Wasynczuk, O., Sudhoff, S., &amp; Pekarek, S. (2013). Analysis of Electric Machinery and Drive Systems. Hoboken: John Wiley &amp; Sons</em>.</p>
+<p>De zes vergelijkingen van de gekoppelde fluxen kunnen in de zes vergelijkingen van de fasespanningen worden gesubstitueerd. Men bekomt dan finaal een stelsel van zes differentiaalvergelijkingen, waarin tijdsvariabele inductiecoëfficiënten voorkomen. Dit maakt dat het oplossen van dit stelsel niet voor de hand ligt. Het probleem kan echter aanzienlijk worden vereenvoudigd als men gebruik maakt van de (d,q)-transformatie.</p>
+<h2 id="2-dq-transformatie">2. dq-Transformatie</h2>
+<p>Een symmetrische, gebalanceerde driefasige grootheid, zoals spanning, stroom of gekoppelde flux, kan men in een vlak van de ruimte voorstellen door drie vectoren die 120° t.o.v. elkaar verdraaid zijn (zie figuur hieronder: drie vectoren langs de assen <strong>as</strong>, <strong>bs</strong> en <strong>cs</strong>). De richting van deze vectoren is vast, maar hun grootte en zin varieert voortdurend volgens een cosinusfunctie in de tijd. Telt men op elk willekeurig tijdstip <em>t</em> de drie vectoren vectorieel op, dan bekomt men een vector (de vector <strong>r<sub>abc</sub></strong>) waarvan de grootte (lengte) op elk tijdstip <em>t</em> constant blijft en die roteert met een hoeksnelheid <em>ω</em> die overeenstemt met de pulsatiefrequentie van de cosinusfuncties.</p>
+<p><img src="../static/articles/vectorregeling/images/ruimtevector.JPG" alt="foto condensatorbatterij" style="zoom: 75%;" /></p>
+<p>Onderstaande animatie illustreert de pulserende fasevectoren <strong>x<sub>a</sub></strong>, <strong>x<sub>b</sub></strong> en <strong>x<sub>c</sub></strong> (rode, groene en blauwe pijl) en de roterende resulterende vector <strong>r<sub>abc</sub></strong> (paarse pijl).</p>
+<p><img src="../static/articles/vectorregeling/images/space_vector.gif" alt="space_vector" style="zoom:45%;" /></p>
+<p>Het moet opgemerkt dat de lengte van de resulterende vector <strong>r<sub>abc</sub></strong> met een factor 2/3 is te vermenigvuldigen, opdat deze lengte zou overeenstemmen met de amplitude van de pulserende vectoren. Wiskundig wordt de vector <strong>r<sub>abc</sub></strong> dan beschreven door:</p>
+<div>
+<div class="MathJax_Preview">
+{r_{abc}} = \frac{2}{3}\left( {{x_a} + a \cdot {x_b} + {a^2} \cdot {x_c}} \right)
+</div>
+<script type="math/tex; mode=display">
+{r_{abc}} = \frac{2}{3}\left( {{x_a} + a \cdot {x_b} + {a^2} \cdot {x_c}} \right)
+</script>
+</div>
+<p>met</p>
+<div>
+<div class="MathJax_Preview">
+a \equiv {e^{j\frac{{2\pi }}{3}}}
+</div>
+<script type="math/tex; mode=display">
+a \equiv {e^{j\frac{{2\pi }}{3}}}
+</script>
+</div>
+<p>en <span><span class="MathJax_Preview">x_a</span><script type="math/tex">x_a</script></span>, <span><span class="MathJax_Preview">x_b</span><script type="math/tex">x_b</script></span> en <span><span class="MathJax_Preview">x_c</span><script type="math/tex">x_c</script></span> de ogenblikkelijke waarden van de driefasige grootheid <span><span class="MathJax_Preview">x_{abc}</span><script type="math/tex">x_{abc}</script></span> op een tijdstip <em>t</em>. De <em>a</em>-operator "vectorizeert" en roteert een reële waarde <span><span class="MathJax_Preview">x_b</span><script type="math/tex">x_b</script></span> gelegen op de reële as van het complexe vlak over een hoek van 120° (de groene vector in de animatie). Het kwadraat van de <em>a</em>-operator stemt dan overeen met een rotatie over een hoek van 240° (de blauwe vector <strong>x<sub>c</sub></strong> in de animatie). </p>
+<p>De vector <strong>r<sub>abc</sub></strong> kan men op elk ogenblik <em>t</em> ontbinden in twee orthogonale componenten <strong>r<sub>d</sub></strong> en <strong>r<sub>q</sub></strong> in een (d,q)-assenstelsel. De d-as valt samen met de magnetische as van de <em>as</em>-statorfasespoel. De q-as staat loodrecht op de d-as, zodat een rechtsdraaiend assenstelsel wordt bekomen. De link kan worden gemaakt met het complexe vlak: de d-as is de reële as van het complexe vlak en de q-as is de imaginaire as van het complexe vlak. Zodoende kan men de vector <strong>r<sub>abc</sub></strong> evenzeer noteren als een complex getal:</p>
+<div>
+<div class="MathJax_Preview">
+{r_{abc}} = {r_d} + j \cdot {r_q}
+</div>
+<script type="math/tex; mode=display">
+{r_{abc}} = {r_d} + j \cdot {r_q}
+</script>
+</div>
+<p>Op grond van de bovenstaande beschouwingen kan besloten worden dat een driefasige grootheid kan herleid worden tot een tweefasige grootheid (vector) of een complex getal. Dit is wat de dq-transformatie doet.</p>
+<p>Men kan nu nog een stap verder gaan door de roterende vector <strong>r<sub>abc</sub></strong> ook te gaan bekijken vanuit andere (d,q)-referentiestelsels die roteren om het vast of stationair (d,q)-referentiestelsel dat hierboven is afgebeeld. </p>
+<p><img src="../static/articles/vectorregeling/images/dq-stelsels.JPG" alt="foto condensatorbatterij" style="zoom: 75%;" /></p>
+<p>In de analyse van wisselstroommotoren onderscheidt men, naast het vast of stationair (d,q)-referentiestelsel of het (d,q)-referentiestelsel van de stator, verder nog:</p>
+<ul>
+<li>het (d,q)-referentiestelsel van de rotor dat draait met een hoeksnelheid die gelijk is aan de elektrische rotorhoekfrequentie.</li>
+<li>het zgn. "synchroon" (d,q)-referentiestelsel dat draait met de hoeksnelheid die overeenstemt met de aan de stator aangelegde elektrische pulsatie- of hoekfrequentie. Dit houdt in dat het synchroon (d,q)-referentiestelsel met dezelfde hoeksnelheid meedraait als het magnetisch stator- en rotordraaiveld.</li>
+</ul>
+<p>Noteer dat de elektrische rotorhoekfrequentie <em>ω<sub>r</sub></em> kan worden afgeleid uit de mechanische hoeksnelheid <em>ω<sub>m</sub></em>van de rotor. Zo geldt namelijk dat:</p>
+<div>
+<div class="MathJax_Preview">
+{\omega _r} = \frac{p}{2}{\omega _m}
+</div>
+<script type="math/tex; mode=display">
+{\omega _r} = \frac{p}{2}{\omega _m}
+</script>
+</div>
+<p>met <em>p</em> het aantal polen van de inductiemotor.</p>
+<p>Verdere uitleg over de methode waarmee de (d,q)-transformatie wordt uitgevoerd, kan men <a href="../static/articles/vectorregeling/pdf/dq-transformatie.pdf" target="_blank">hier</a> terugvinden.</p>
+<h2 id="3-het-dynamisch-dq-model-van-de-inductiemotor">3. Het dynamisch dq-model van de inductiemotor</h2>
+<p>D.m.v. de dq-transformatie is het nu mogelijk om de driefasige spannings- en  fluxvergelijkingen van de inductiemotor sterk te gaan vereenvoudigen. Hoe dit precies verloopt, wordt <a href="../static/articles/vectorregeling/pdf/dq-model.pdf" target="_blank">hier</a> uitgewerkt. Hieronder worden enkel maar de resultaten van deze dq-transformatie voorgesteld.</p>
+<h3 id="31-stator-en-rotorspanning-in-het-dq-referentiestelsel-met-arbitraire-referentiehoeksnelheid">3.1 Stator- en rotorspanning in het (d,q)-referentiestelsel met arbitraire referentiehoeksnelheid <em>ω</em></h3>
+<div>
+<div class="MathJax_Preview">
+v_{d,s}^\omega  = {R_s}i_{d,s}^\omega  + \frac{{d\lambda _{d,s}^\omega }}{{dt}} - \omega \lambda _{q,s}^\omega
+</div>
+<script type="math/tex; mode=display">
+v_{d,s}^\omega  = {R_s}i_{d,s}^\omega  + \frac{{d\lambda _{d,s}^\omega }}{{dt}} - \omega \lambda _{q,s}^\omega
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+v_{q,s}^\omega  = {R_s}i_{q,s}^\omega  + \frac{{d\lambda _{q,s}^\omega }}{{dt}} + \omega \lambda _{d,s}^\omega
+</div>
+<script type="math/tex; mode=display">
+v_{q,s}^\omega  = {R_s}i_{q,s}^\omega  + \frac{{d\lambda _{q,s}^\omega }}{{dt}} + \omega \lambda _{d,s}^\omega
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+{v'}_{d,r}^\omega  = {{R'}_r}{i'}_{d,r}^\omega  + \frac{{d{\lambda '}_{d,r}^\omega }}{{dt}} - \left( {\omega  - {\omega _r}} \right){\lambda '}_{q,r}^\omega
+</div>
+<script type="math/tex; mode=display">
+{v'}_{d,r}^\omega  = {{R'}_r}{i'}_{d,r}^\omega  + \frac{{d{\lambda '}_{d,r}^\omega }}{{dt}} - \left( {\omega  - {\omega _r}} \right){\lambda '}_{q,r}^\omega
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+{v'}_{q,r}^\omega  = {{R'}_r}{i'}_{q,r}^\omega  + \frac{{d{\lambda '}_{q,r}^\omega }}{{dt}} + \left( {\omega  - {\omega _r}} \right){\lambda '}_{d,r}^\omega
+</div>
+<script type="math/tex; mode=display">
+{v'}_{q,r}^\omega  = {{R'}_r}{i'}_{q,r}^\omega  + \frac{{d{\lambda '}_{q,r}^\omega }}{{dt}} + \left( {\omega  - {\omega _r}} \right){\lambda '}_{d,r}^\omega
+</script>
+</div>
+<p>Noteer dat in het geval van een kooiankermotor het rotorcircuit is kortgesloten zodat de d- en q-component van de rotorspanning nul zijn.</p>
+<h3 id="32-gekoppelde-stator-en-rotorflux-in-het-dq-referentiestelsel-met-arbitraire-referentiehoeksnelheid">3.2 Gekoppelde stator- en rotorflux in het (d,q)-referentiestelsel met arbitraire referentiehoeksnelheid <em>ω</em></h3>
+<div>
+<div class="MathJax_Preview">
+\lambda _{d,s}^\omega  = \left( {\frac{3}{2}{L_{ms}} + {L_{ls}}} \right)i_{d,s}^\omega  + \left( {\frac{3}{2}{L_{ms}}} \right){i'}_{d,r}^\omega
+</div>
+<script type="math/tex; mode=display">
+\lambda _{d,s}^\omega  = \left( {\frac{3}{2}{L_{ms}} + {L_{ls}}} \right)i_{d,s}^\omega  + \left( {\frac{3}{2}{L_{ms}}} \right){i'}_{d,r}^\omega
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+\lambda _{q,s}^\omega  = \left( {\frac{3}{2}{L_{ms}} + {L_{ls}}} \right)i_{q,s}^\omega  + \left( {\frac{3}{2}{L_{ms}}} \right){i'}_{q,r}^\omega
+</div>
+<script type="math/tex; mode=display">
+\lambda _{q,s}^\omega  = \left( {\frac{3}{2}{L_{ms}} + {L_{ls}}} \right)i_{q,s}^\omega  + \left( {\frac{3}{2}{L_{ms}}} \right){i'}_{q,r}^\omega
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+{\lambda '}_{d,r}^\omega  = \left( {\frac{3}{2}{L_{ms}} + {{L'}_{lr}}} \right){i'}_{d,r}^\omega  + \left( {\frac{3}{2}{L_{ms}}} \right){i'}_{d,s}^\omega
+</div>
+<script type="math/tex; mode=display">
+{\lambda '}_{d,r}^\omega  = \left( {\frac{3}{2}{L_{ms}} + {{L'}_{lr}}} \right){i'}_{d,r}^\omega  + \left( {\frac{3}{2}{L_{ms}}} \right){i'}_{d,s}^\omega
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+{\lambda '}_{q,r}^\omega  = \left( {\frac{3}{2}{L_{ms}} + {{L'}_{lr}}} \right){i'}_{q,r}^\omega  + \left( {\frac{3}{2}{L_{ms}}} \right)i_{q,s}^\omega
+</div>
+<script type="math/tex; mode=display">
+{\lambda '}_{q,r}^\omega  = \left( {\frac{3}{2}{L_{ms}} + {{L'}_{lr}}} \right){i'}_{q,r}^\omega  + \left( {\frac{3}{2}{L_{ms}}} \right)i_{q,s}^\omega
+</script>
+</div>
+<h3 id="33-elektromechanisch-vermogen-en-koppel-in-het-dq-referentiestelsel-met-arbitraire-referentiehoeksnelheid">3.3 Elektromechanisch vermogen en koppel in het (d,q)-referentiestelsel met arbitraire referentiehoeksnelheid <em>ω</em></h3>
+<p>Vergelijking van het elektromechanisch vermogen en het elektromechanisch (of inwendig) koppel:</p>
+<div>
+<div class="MathJax_Preview">
+{P_{em}} = \frac{9}{8}p{\omega _m}{L_{ms}}\left( {i_{q,s}^\omega{i'}_{d,r}^\omega - i_{d,s}^\omega{i'}_{q,r}^\omega} \right)
+</div>
+<script type="math/tex; mode=display">
+{P_{em}} = \frac{9}{8}p{\omega _m}{L_{ms}}\left( {i_{q,s}^\omega{i'}_{d,r}^\omega - i_{d,s}^\omega{i'}_{q,r}^\omega} \right)
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+{T_{em}} = \frac{{{P_{em}}}}{{{\omega _m}}} = \frac{9}{8}p{L_{ms}}\left( {i_{q,s}^\omega i_{d,r}^\omega - i_{d,s}^\omega i_{q,r}^\omega} \right)
+</div>
+<script type="math/tex; mode=display">
+{T_{em}} = \frac{{{P_{em}}}}{{{\omega _m}}} = \frac{9}{8}p{L_{ms}}\left( {i_{q,s}^\omega i_{d,r}^\omega - i_{d,s}^\omega i_{q,r}^\omega} \right)
+</script>
+</div>
+<ul>
+<li>Het superscript <em>ω</em> refereert aan de hoeksnelheid van het roterend (d,q)-referentiestelsel.</li>
+<li>Het subscript <em>d</em> refereert aan de d-component of directe component van de spanning, stroom of gekoppelde flux.</li>
+<li>Het subscript <em>q</em> refereert aan de q-component of kwadratuur-component van de spanning, stroom of gekoppelde flux.</li>
+<li>Het subscript <em>s</em> refereert aan de stator.</li>
+<li>Het subscript <em>r</em> refereert aan de rotor.</li>
+<li>De variabele <em>ω</em> is de hoeksnelheid van het roterend (d,q)-referentiestelsel.</li>
+<li>De variabele <em>ω<sub>r</sub></em> is de elektrische hoekfrequentie van de rotorgrootheden (spanning, stroom en gekoppelde flux).</li>
+<li>De variabele <em>ω<sub>m</sub></em> is de mechanische hoeksnelheid van de rotor.</li>
+<li>De variabele <em>p</em> is het aantal polen van de inductiemotor.</li>
+<li>De variabele <em>R<sub>s</sub></em> is de statorfaseweerstand.</li>
+<li>De variabele <em>R'<sub>r</sub></em> is de rotorfaseweerstand betrokken op de stator.</li>
+<li>De variabele <em>L<sub>ms</sub></em> is de magnetisatie-inductantie van de statorfasespoelen (verbonden aan de flux vanwege de statorstromen die zich koppelt met de rotorfasespoelen).</li>
+<li>De variabele <em>L<sub>ls</sub></em> is de lek-inductantie van de statorfasespoelen (verbonden aan de flux van de statorfasespoel die zich niet koppelt met de rotorfasespoelen =  lekflux).</li>
+<li>De variabele <em>L'<sub>lr</sub></em> is de lek-inductantie van de rotorfasespoelen betrokken op de stator.</li>
+<li>Het accent-teken refereert aan rotorgrootheden die betrokken zijn op de stator.</li>
+</ul>
+<p>De machinevariabelen van de inductiemotor (de weerstanden en de inductanties of inductiecoëfficiënten), kunnen d.m.v. praktische proeven worden bepaald (cf. nullast- en kortsluitproef).</p>
+<p>Met elektromechanisch vermogen wordt het elektrisch vermogen bedoeld dat in mechanisch vermogen  wordt omgezet en zonder aftrek van de inwendige mechanische verliezen in de motor.</p>
+<h2 id="4-dynamische-simulatie-van-de-directe-aanzet-van-een-inductiemotor">4. Dynamische simulatie van de directe aanzet van een inductiemotor</h2>
+<p>De hierboven weergegeven vergelijkingen beschrijven volledig het dynamisch gedrag van de inductiemotor in het gekozen (d,q)-referentiestelsel. </p>
+<p>Laat ons eens nagaan hoe de opgenomen driefasige statorstroom, het elektromechanisch of inwendig koppel en het motortoerental in de tijd zullen verlopen, wanneer een inductiemotor rechtstreeks wordt aangesloten op een star elektrisch net (d.i. de directe aanzet van de inductiemotor). Vóór het moment van inschakelen zijn alle stator- en rotorgrootheden nog nul. Op het tijdstip <em>t</em> = 0 verschijnt de aangelegde driefasige netspanning over de statorfasespoelen. Deze driefasige spanning kan getransformeerd worden naar het vast (d,q)-referentiestelsel van de stator. Voor het vast (d,q)-referentiestelsel van de stator geldt dat de referentiehoeksnelheid <em>ω</em> nul is. Uit de spanningsvergelijkingen cf. par. 3.1 kan men de d- en q-componenten van de gekoppelde fluxen berekenen (differentiaalvergelijkingen van de 1ste orde in de onbekende <em>λ</em>). Met de d- en q-componenten van de gekoppelde fluxen bepaald, bekomen we dan cf. par. 3.2 een stelsel van 4 fluxvergelijkingen in de 4 onbekende d- en q-componenten van stator- en rotorstroom. Dit stelsel kan bijvoorbeeld m.b.v. Gauss-eliminatie worden opgelost. Vervolgens kan dan het elektromechanisch of inwendig koppel berekend worden. Daarmee kan ten slotte het motortoerental berekend worden, mits het massatraagheidsmoment van motor en belasting, alsook het belastingskoppel gekend zijn. De bekomen resultaten op een tijdstip <em>t</em> worden dan in een volgende berekeningslus toegepast om opnieuw de stromen, het koppel en het motortoerental op het volgende tijdstip te berekenen. Zo schrijdt men vooruit in de tijd. De berekende dq-statorstromen kunnen m.b.v. de inverse (d,q)-transformatie vanuit het stationair (d,q)-referentiestelsel worden getransformeerd tot de werkelijke driefasige statorstromen die door de statorfasespoelen vloeien tijdens het aanlopen van de motor vanuit stilstand.</p>
+<p>De vergelijkingen van het dq-model van de inductiemotor en de routines om de dq-transformaties uit te voeren kunnen in een computerprogramma worden geïmplementeerd. Het computerprogramma berekent numeriek het tijdsverloop van de aanloopstroom, het aanzetkoppel en het motortoerental op basis van een vaste tijdstap of -sprong. De grafieken hieronder zijn berekend met een eigen computerprogramma dat werd geschreven in de programmeertaal Python.</p>
+<p><strong>Kenmerken van de gesimuleerde inductiemotor</strong></p>
+<table>
+<thead>
+<tr>
+<th>motorparameter</th>
+<th>waarde</th>
+<th>eenheid</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nominale fasespanning</td>
+<td>127</td>
+<td>V</td>
+</tr>
+<tr>
+<td>nominale fasestroom</td>
+<td>12,8</td>
+<td>A</td>
+</tr>
+<tr>
+<td>nominale frequentie (netfrequentie)</td>
+<td>60</td>
+<td>Hz</td>
+</tr>
+<tr>
+<td>nominaal motortoerental</td>
+<td>1750</td>
+<td>t/min</td>
+</tr>
+<tr>
+<td>nominaal mechanisch vermogen</td>
+<td>3728,499</td>
+<td>W</td>
+</tr>
+<tr>
+<td>aantal polen</td>
+<td>4</td>
+<td>-</td>
+</tr>
+<tr>
+<td>statorfaseweerstand</td>
+<td>0,295</td>
+<td>Ω</td>
+</tr>
+<tr>
+<td>rotorfaseweerstand (betrokken op de stator)</td>
+<td>0,379</td>
+<td>Ω</td>
+</tr>
+<tr>
+<td>magnetisatie-reactantie (bij nominale frequentie)</td>
+<td>14,828</td>
+<td>Ω</td>
+</tr>
+<tr>
+<td>statorlekveld-reactantie (bij nominale frequentie)</td>
+<td>0,676</td>
+<td>Ω</td>
+</tr>
+<tr>
+<td>rotorlekveld-reactantie (bij nominale frequentie en betrokken op de stator)</td>
+<td>0,676</td>
+<td>Ω</td>
+</tr>
+<tr>
+<td>massatraagheidsmoment</td>
+<td>0,02</td>
+<td>kg.m²</td>
+</tr>
+</tbody>
+</table>
+<p>De inductiemotor wordt onbelast en rechtstreeks ingeschakeld op een star driefasig net met nominale lijnspanning 220 V en netfrequentie 60 Hz.</p>
+<p><strong>Aanloopstroom in de loop van de tijd</strong></p>
+<p><img src="../static/articles/vectorregeling/images/dol_current.png" alt="aanloopstroom bij directe aanzet" style="zoom: 67%;" /></p>
+<p><strong>Elektromechanisch koppel in de loop van de tijd</strong></p>
+<p><img src="../static/articles/vectorregeling/images/dol_torque.png" alt="koppel bij directe aanzet" style="zoom: 67%;" /></p>
+<p><strong>Motortoerental in de loop van de tijd</strong></p>
+<p><img src="../static/articles/vectorregeling/images/dol_speed.png" alt="motortoerental bij directe aanzet" style="zoom: 67%;" /></p>
+<p>Noteer dat de motor aanloopt naar het synchroon toerental (1.800 t/min voor een 4-polige motor aangesloten op een 60 Hz net). Dit komt omdat er geen rekening is gehouden met de mechanische vermogensverliezen in het dynamisch computermodel van de inductiemotor.</p>
+<p><strong>Dynamische koppel-toerentalcurve</strong></p>
+<p><img src="../static/articles/vectorregeling/images/dol_speed-torque.png" alt="koppel-toerentalcurve directe aanzet" style="zoom: 67%;" /></p>
+<h2 id="5-het-principe-van-vectorregeling">5. Het principe van vectorregeling</h2>
+<p>Hierna wordt het werkingsprincipe besproken van de directe vectorregeling dat gebaseerd is op de <strong>rotorflux</strong>. De rotor roteert met een mechanische hoeksnelheid <em>ω<sub>m</sub></em>. Afhankelijk van het aantal polen <em>p</em> van de inductiemotor leidt dit tot een elektrische hoekfrequentie <em>ω<sub>r</sub></em> = (<em>p</em>/2)<em>ω<sub>m</sub></em> van de spanningen en stromen die in het rotorcircuit  worden geïnduceerd door het resulterend magnetisch draaiveld in de luchtspleet van de inductiemotor.</p>
+<p>Het rotordraaiveld roteert met dezelfde mechanische hoeksnelheid <em>ω<sub>s</sub></em> als het statordraaiveld. De hoeksnelheid <em>ω<sub>s</sub></em> wordt de synchrone hoeksnelheid genoemd. De mechanische, synchrone hoeksnelheid <em>ω<sub>s</sub></em> volgt uit de elektrische hoekfrequentie <em>ω<sub>e</sub></em> (2<em>πf<sub>e</sub></em>) van de aangelegde wisselspanning aan de statorklemmen van de inductiemotor:</p>
+<div>
+<div class="MathJax_Preview">
+{\omega _s} = \frac{{{\omega _e}}}{{{p \mathord{\left/
+ {\vphantom {p 2}} \right.} 2}}} = \frac{{2\pi {f_e}}}{{{p \mathord{\left/
+ {\vphantom {p 2}} \right.}2}}}
+</div>
+<script type="math/tex; mode=display">
+{\omega _s} = \frac{{{\omega _e}}}{{{p \mathord{\left/
+ {\vphantom {p 2}} \right.} 2}}} = \frac{{2\pi {f_e}}}{{{p \mathord{\left/
+ {\vphantom {p 2}} \right.}2}}}
+</script>
+</div>
+<p>De essentie van de vectorregeling, ook wel veldgeoriënteerde regeling genoemd, schuilt in de keuze van het  (d,q)-referentiestelsel waarin de vectorregelaar de bedrijfsparameters van de inductiemotor waarneemt en regelt. <strong>In de vectorregeling gebaseerd op de rotorflux wordt het (d,q)-referentiestelsel zo gekozen dat de d-as samenvalt met de fluxvector van het rotordraaiveld.</strong> Zoals hierboven reeds werd aangehaald, kan elke inductiemotor, ongeacht zijn aantal machinepolen, in principe worden geanalyseerd als een tweepolige machine met 3 statorfasespoelen en 3 rotorfasespoelen. Het aantal polen waarmee de inductiemotor is uitgevoerd, speelt enkel een rol wanneer de conversie wordt gemaakt tussen mechanische en elektrische hoeksnelheid of vice-versa. De rotorfluxvector is de vector die de zuidpool met de noordpool van het rotordraaiveld verbindt (vector gericht vanaf de zuidpool naar de noordpool).</p>
+<p><strong>Door het laten samenvallen van de d-as met de rotorfluxvector, zal het (d,q)-referentiestelsel met dezelfde hoeksnelheid moeten roteren als het rotordraaiveld. Dit is dus met de <em>elektrische</em> synchrone hoeksnelheid <em>ω<sub>e</sub></em> (2<em>πf<sub>e</sub></em>).</strong></p>
+<h3 id="51-verband-tussen-de-rotorflux-en-de-directe-component-van-de-statorstroom">5.1 Verband tussen de rotorflux en de directe component van de statorstroom</h3>
+<p>De spanningsvergelijking van de d-component van de rotorspanning in een (d,q)-referentiestelsel met  elektrisch synchrone hoeksnelheid <em>ω<sub>e</sub></em> luidt (cf. par. 3.1):</p>
+<div>
+<div class="MathJax_Preview">
+0 = {R_r}i_{d,r}^e + \frac{{d\lambda _{d,r}^e}}{{dt}} - \left( {{\omega _e} - {\omega _r}} \right)\lambda _{q,r}^e
+</div>
+<script type="math/tex; mode=display">
+0 = {R_r}i_{d,r}^e + \frac{{d\lambda _{d,r}^e}}{{dt}} - \left( {{\omega _e} - {\omega _r}} \right)\lambda _{q,r}^e
+</script>
+</div>
+<ul>
+<li>Het accent-teken waarmee wordt aangeduid dat rotorgrootheden op de stator zijn betrokken, wordt vanaf hier weggelaten, wetende dat de rotorgrootheden steeds op de stator zijn betrokken.</li>
+<li>Het superscript <em>e</em> refereert aan het synchroon (d,q)-referentiestelsel.</li>
+</ul>
+<p>In het geval van een kortsluitmotor (kooiankermotor) is het rotorcircuit kortgesloten, zodat de rotorspanning nul is. Door de hierboven vermelde keuze van het (d,q)-referentiestelsel, waarbij de d-as dus samenvalt met de rotorfluxvector, volgt dat de q-component van de gekoppelde rotorflux nul is. Aldus volgt  er dat:</p>
+<div>
+<div class="MathJax_Preview">
+i_{d,r}^e =  - \frac{1}{{{R_r}}}\frac{{d\lambda _{d,r}^e}}{{dt}}
+</div>
+<script type="math/tex; mode=display">
+i_{d,r}^e =  - \frac{1}{{{R_r}}}\frac{{d\lambda _{d,r}^e}}{{dt}}
+</script>
+</div>
+<p>De fluxvergelijking van de d-component van de rotorflux luidt (cf. par. 3.2):</p>
+<div>
+<div class="MathJax_Preview">
+\lambda _{d,r}^e = {L_r}i_{d,r}^e + {L_m}i_{d,s}^e
+</div>
+<script type="math/tex; mode=display">
+\lambda _{d,r}^e = {L_r}i_{d,r}^e + {L_m}i_{d,s}^e
+</script>
+</div>
+<p>met <span><span class="MathJax_Preview">{L_r} = \frac{3}{2}{L_{ms}} + {L_{lr}}</span><script type="math/tex">{L_r} = \frac{3}{2}{L_{ms}} + {L_{lr}}</script></span> en <span><span class="MathJax_Preview">{L_m} = \frac{3}{2}{L_{ms}}</span><script type="math/tex">{L_m} = \frac{3}{2}{L_{ms}}</script></span>.</p>
+<p>Met de voorgaande betrekking kan de fluxvergelijking worden uitgewerkt tot:</p>
+<div>
+<div class="MathJax_Preview">
+\frac{{d\lambda _{d,r}^e}}{{dt}} + \frac{{{R_r}}}{{{L_r}}}\lambda _{d,r}^e = \frac{{{L_m}{R_r}}}{{{L_r}}}i_{d,s}^e
+</div>
+<script type="math/tex; mode=display">
+\frac{{d\lambda _{d,r}^e}}{{dt}} + \frac{{{R_r}}}{{{L_r}}}\lambda _{d,r}^e = \frac{{{L_m}{R_r}}}{{{L_r}}}i_{d,s}^e
+</script>
+</div>
+<p>Deze 1ste-orde differentiaalvergelijking legt een eenduidig verband vast tussen de d-component van de statorstroom en de rotorflux. Dezelfde vergelijking vindt men ook terug bij de gelijkstroommotor, waarmee het verband wordt uitgedrukt tussen de veldstroom en het stationair magnetisch veld. Bijgevolg, de vectorregelaar ziet in het synchroon (d,q)-referentiestelsel eigenlijk geen a.c.-motor meer, maar een d.c.-motor. <strong>De d-component van de statorstroom <span><span class="MathJax_Preview">i_{d,s}^e</span><script type="math/tex">i_{d,s}^e</script></span> kan opgevat worden als de veldstroom waarmee de rotorflux kan geregeld worden.</strong> Wanneer de veldstroom constant blijft, zal het verband tussen het rotorveld en de veldstroom zich, na het uitsterven van het overgangsverschijnsel, herleiden tot:</p>
+<div>
+<div class="MathJax_Preview">
+\lambda _{d,r}^e = {L_m}i_{d,s}^e
+</div>
+<script type="math/tex; mode=display">
+\lambda _{d,r}^e = {L_m}i_{d,s}^e
+</script>
+</div>
+<h3 id="52-verband-tussen-het-elektromechanisch-koppel-en-de-q-component-van-de-statorstroom">5.2 Verband tussen het elektromechanisch koppel en de q-component van de statorstroom</h3>
+<p>De koppelvergelijking (cf. par. 3.3) kan men, gebruikmakend van de fluxvergelijkingen van de rotor (cf. par. 3.2), waarmee de rotorstromen uit de koppelvergelijking worden geëlimineerd, ontwikkelen tot:</p>
+<div>
+<div class="MathJax_Preview">
+{T_{em}} =  \frac{3}{4}p\frac{{{L_{m}}}}{{{L_r}}}\left( {i_{q,s}^e\lambda _{d,r}^e - i_{d,s}^e\lambda _{q,r}^e} \right)
+</div>
+<script type="math/tex; mode=display">
+{T_{em}} =  \frac{3}{4}p\frac{{{L_{m}}}}{{{L_r}}}\left( {i_{q,s}^e\lambda _{d,r}^e - i_{d,s}^e\lambda _{q,r}^e} \right)
+</script>
+</div>
+<p>Door de keuze van het (d,q)-referentiestelsel, waarbij de d-as samenvalt met de rotorfluxvector (en dus <span><span class="MathJax_Preview">\lambda_{q,r}^e</span><script type="math/tex">\lambda_{q,r}^e</script></span> = 0), kan dit nog herleid worden tot:</p>
+<div>
+<div class="MathJax_Preview">
+{T_{em}} =  \frac{3}{4}p\frac{{{L_{m}}}}{{{L_r}}}\left( {i_{q,s}^e\lambda _{d,r}^e}\right)
+</div>
+<script type="math/tex; mode=display">
+{T_{em}} =  \frac{3}{4}p\frac{{{L_{m}}}}{{{L_r}}}\left( {i_{q,s}^e\lambda _{d,r}^e}\right)
+</script>
+</div>
+<p>Als de d-component van de statorstroom <span><span class="MathJax_Preview">i_{d,s}^e</span><script type="math/tex">i_{d,s}^e</script></span> (de veldstroom cf. supra) op een constante waarde wordt vastgehouden en bijgevolg ook de rotorflux <span><span class="MathJax_Preview">\lambda_{d,r}^e</span><script type="math/tex">\lambda_{d,r}^e</script></span>, dan volgt dat het elektromechanisch koppel recht evenredig wordt met de q-component van de statorstroom <span><span class="MathJax_Preview">i_{q,s}^e</span><script type="math/tex">i_{q,s}^e</script></span>. Dit zou men ook kunnen uitdrukken als:</p>
+<div>
+<div class="MathJax_Preview">
+{T_{em}} = {K_T}i_{q,s}^e
+</div>
+<script type="math/tex; mode=display">
+{T_{em}} = {K_T}i_{q,s}^e
+</script>
+</div>
+<p>Bijgevolg, men stelt vast dat in het synchroon (d,q)-referentiestelsel waarvan de d-as samenvalt met de rotorfluxvector, de koppelvergelijking van de gelijkstroommotor tevoorschijn komt. Met andere woorden, opnieuw ziet de vectorregelaar in het synchroon (d,q)-referentiestelsel geen a.c.-motor meer, maar een d.c.-motor. <strong>De q-component van de statorstroom <span><span class="MathJax_Preview">i_{q,s}^e</span><script type="math/tex">i_{q,s}^e</script></span> kan worden opgevat als de arbeidsstroom waarmee het motorkoppel kan geregeld worden.</strong></p>
+<h2 id="6-blokschema-van-de-vectorregelaar">6. Blokschema van de vectorregelaar</h2>
+<p>Uit voorgaande paragraaf 5 volgt dat m.b.v. de dq-transformatie de regeling van de inductiemotor nauw gaat aanleunen bij de regeling van de d.c.-motor. Daartoe is het evenwel vereist dat de positie van de rotorfluxvector op elk tijdstip <em>t</em> kan gevolgd worden. Dit is de taak van de zgn. "fluxschatter" (<em>flux estimator</em>). De fluxschatter ontvangt de meetsignalen van de driefasige statorspanning en/of -stroom en/of de motorhoeksnelheid. Er bestaan verschillende mogelijkheden om de fluxschatter te implementeren (op basis van, ofwel spanning, ofwel stroom ofwel een combinatie van de beide). Op basis van deze fysische meetwaarden en het dynamisch motormodel berekent de fluxschatter de rotatiehoek van de rotorfluxvector op elk tijdstip <em>t</em> uit:</p>
+<div>
+<div class="MathJax_Preview">
+{\vartheta _e} = \arctan \left( {{{\lambda _{q,r}^s} \mathord{\left/
+ {\vphantom {{\lambda _{q,r}^s} {\lambda _{d,r}^s}}} \right.} {\lambda _{d,r}^s}}} \right)
+</div>
+<script type="math/tex; mode=display">
+{\vartheta _e} = \arctan \left( {{{\lambda _{q,r}^s} \mathord{\left/
+ {\vphantom {{\lambda _{q,r}^s} {\lambda _{d,r}^s}}} \right.} {\lambda _{d,r}^s}}} \right)
+</script>
+</div>
+<p>met <span><span class="MathJax_Preview">{\lambda _{q,r}^s}</span><script type="math/tex">{\lambda _{q,r}^s}</script></span> de q-component van de rotorflux in het vast (d,q)-referentiestelsel van de stator en <span><span class="MathJax_Preview">{\lambda _{d,r}^s}</span><script type="math/tex">{\lambda _{d,r}^s}</script></span> de q-component van de rotorflux in het vast (d,q)-referentiestelsel van de stator. Evenzo kan de fluxschatter dan ook de rotorflux bepalen in het synchroon (d,q)-referentiestelsel.</p>
+<p>Eenmaal de hoekpositie van de rotorflux is bepaald kan m.b.v. de dq-transformatie de gemeten driefasige statorspanning en -stroom worden vertaald naar d- en q-componenten in het synchroon (d,q)-referentiestelsel. De getransformeerde meetwaarden worden dan teruggekoppeld naar de respectievelijke regelaars die de vectorregelaar samenstellen. Men onderscheidt:</p>
+<ul>
+<li>
+<p>de fluxregelaar</p>
+</li>
+<li>
+<p>de snelheidsregelaar</p>
+</li>
+<li>
+<p>de q-stroomregelaar</p>
+</li>
+<li>
+<p>de d-stroomregelaar</p>
+</li>
+</ul>
+<p><img src="../static/articles/vectorregeling/images/vector-controller.jpg" alt="vector-controller" style="zoom:100%;" /></p>
+<p>De fluxregelaar ontvangt van buitenaf de wenswaarde (<em>set point</em>) van de rotorflux. Van de fluxschatter verkrijgt de fluxregelaar de berekende momentane rotorflux. Op basis van het PI-regelalgoritme bepaalt de fluxregelaar de vereiste d-component van de statorstroom (de veldstroom), teneinde de gewenste rotorflux te bereiken of te handhaven.</p>
+<p>De snelheidsregelaar ontvangt van buitenaf de wenswaarde (<em>set point</em>) van de motorhoeksnelheid. De gemeten motorhoeksnelheid wordt teruggekoppeld naar de snelheidsregelaar. Op basis van het PI-regelalgoritme bepaalt de snelheidsregelaar de vereiste q-component van de statorstroom (arbeidsstroom). Is de gemeten hoeksnelheid kleiner dan de gewenste hoeksnelheid, dan is er een groter motorkoppel vereist en bijgevolg een grotere arbeidsstroom. In het omgekeerde geval, geldt ook het omgekeerde: het motorkoppel en dus de arbeidsstroom moeten kleiner worden, indien de gemeten hoeksnelheid groter is dan de ingestelde, gevraagde waarde.</p>
+<p>De vereiste veldstroom, bepaald door de fluxregelaar, wordt doorgegeven aan de d-stroomregelaar (veldstroomregelaar).  De d-stroomregelaar ontvangt tevens de gemeten en reeds getransformeerde d-component van de teruggekoppelde statorstroom (gemeten veldstroom). Op basis van de afwijking tussen vereiste en gemeten waarde, bepaalt de d-stroomregelaar d.m.v. het PI-regelalgoritme de vereiste d-component van de statorspanning. </p>
+<p>De vereiste arbeidsstroom, bepaald door de snelheidsregelaar, wordt doorgegeven aan de q-stroomregelaar (arbeidsstroomregelaar of koppelregelaar).  De q-stroomregelaar ontvangt tevens de gemeten en getransformeerde q-component van de teruggekoppelde statorstroom (gemeten arbeidsstroom). Op basis van de afwijking tussen vereiste en gemeten waarde, bepaalt de q-stroomregelaar d.m.v. het PI-regelalgoritme de vereiste q-component van de statorspanning.</p>
+<p>De d- en q-stroomregelaars zijn verder ook uitgerust met een compensatieregeling waarmee de invloed van de tegen-e.m.k. in de statorfasespoelen wordt gecompenseerd (de regelaars voeren een even groot, maar tegengesteld signaal toe aan hun uitgangssignaal of regelcommando). De statorfasespoelen kunnen daardoor aanzien worden als een zuiver RL-seriecircuit.</p>
+<p>D.m.v. inverse dq-transformatie worden de vereiste d- en q-componenten van de statorspanning, bepaald door de d- en q-stroomregelaar in de vectorregelaar, getransformeerd naar een driefasige statorspanning die aan de inductiemotor wordt aangeboden. In de praktijk echter wordt de vereiste driefasige spanning "gemaakt" door de tussenkomst van een PWM-inverter. D.m.v. <em>Pulse Width Modulation</em> (PWM) wordt de netspanning zodanig vervormd dat de benodigde (bij benadering sinusoïdale) driefasige spanning over de statorklemmen van de inductiemotor wordt aangelegd.</p>
+<p>De kunst bestaat er voornamelijk in om de diverse parameters van de regelaars (de versterkingsfactoren van de P- en I-regelaars) optimaal in te stellen in functie van de welbepaalde, specifieke motor én  belasting. Daartoe kan  bijvoorbeeld worden verwezen aan <em>Sang-Hoon, K. (2017). Electric Motor Control. Amsterdam: Elsevier.</em></p>
+<h2 id="7-dynamische-simulatie-van-de-aanzet-van-een-inductiemotor-mbv-directe-vectorregeling-softstart">7. Dynamische simulatie van de aanzet van een inductiemotor m.b.v. directe vectorregeling (softstart)</h2>
+<p>Ter afsluiting van dit artikel wordt gedemonstreerd hoe de directe vectorregeling gebaseerd op de rotorflux het dynamisch gedrag van de inductiemotor regelt, wanneer deze inductiemotor onbelast vanuit stilstand wordt opgestart. Dezelfde inductiemotor als in paragraaf 4 is voor de simulatie aangewend. Het moet hierbij genoteerd worden dat in de simulatie de PWM-inverter niet is geïmplementeerd. De door de vectorregelaar (stroomregelaar) berekende driefasige statorspanning wordt in de simulatie dus rechtstreeks aan de inductiemotor toegevoerd. </p>
+<p>In de simulatie is het gewenst toerental op de vectorregelaar ingesteld op het nominaal toerental (1.750 t/min). De gewenste rotorflux is ingesteld op de nominale waarde. De snelheidsregelaar en de fluxregelaar zijn zodanig ingesteld dat de nominale waarden van de q- en d-statorstroom niet overschreden kunnen worden (stroombegrenzing). Evenzo is de stroomregelaar in de simulatie zodanig ingesteld dat de uitgestuurde statorspanning niet groter kan worden dan de nominale statorspanning. Noteer dat in het dynamisch motormodel de inwendige mechanische verliezen niet zijn gemodelleerd.</p>
+<p><strong>Statorspanning uitgestuurd door vectorregelaar in de loop van de tijd</strong></p>
+<p><img src="../static/articles/vectorregeling/images/vec_abc-stat-voltage.png" alt="vec_abc-stat-voltage" style="zoom:67%;" /></p>
+<p><strong>Aanloopstroom van de inductiemotor in de loop van de tijd</strong></p>
+<p><img src="../static/articles/vectorregeling/images/vec_abc-stat-current.png" alt="vec_abc-stat-current" style="zoom:67%;" /></p>
+<p><strong>Elektromechanisch koppel in de loop van de tijd</strong></p>
+<p><img src="../static/articles/vectorregeling/images/vec_torque.png" alt="vec_torque" style="zoom:67%;" /></p>
+<p><strong>Motortoerental in de loop van de tijd</strong></p>
+<p><img src="../static/articles/vectorregeling/images/vec_motor-speed.png" alt="vec_motor-speed" style="zoom:67%;" /></p>
+<p><strong>Dynamische koppel-toerencurve</strong></p>
+<p><img src="../static/articles/vectorregeling/images/vec_torque-speed.png" alt="vec_torque-speed" style="zoom:67%;" /></p>
+<p>Het verloop van de statorstroom in het synchroon (d,q)-referentiestelsel ziet er als volgt uit:</p>
+<p><strong>d-component van de statorstroom (magnetische veldstroom)</strong></p>
+<p><img src="../static/articles/vectorregeling/images/d-stat-current.png" alt="d-stat-current" style="zoom:67%;" /></p>
+<p><strong>q-component van de statorstroom (arbeidsstroom)</strong></p>
+<p><img src="../static/articles/vectorregeling/images/q-stat-current.png" alt="q-stat-current" style="zoom:67%;" /></p>
+<p>De oranje curve is het verloop van de gemeten stroom (de gewenste waarde is de blauwe curve, maar deze kan men hier niet zien omdat de gemeten waarde de gewenste waarde quasi perfect volgt).</p>
+    </div>
+
+        </div>
+
+        <div class="column right">
+            
+    
+        <div class="toc_layout">
+            <h2>Inhoudstafel</h2>
+            
+<ul>
+<li><a href="#vectoraandrijving-van-de-driefasige-inductiemotor">VECTORAANDRIJVING VAN DE DRIEFASIGE INDUCTIEMOTOR</a><ul>
+<li><a href="#1-het-dynamisch-driefasig-model-van-de-inductiemotor">1. Het dynamisch driefasig model van de inductiemotor</a></li>
+<li><a href="#2-dq-transformatie">2. dq-Transformatie</a></li>
+<li><a href="#3-het-dynamisch-dq-model-van-de-inductiemotor">3. Het dynamisch dq-model van de inductiemotor</a><ul>
+<li><a href="#31-stator-en-rotorspanning-in-het-dq-referentiestelsel-met-arbitraire-referentiehoeksnelheid">3.1 Stator- en rotorspanning in het (d,q)-referentiestelsel met arbitraire referentiehoeksnelheid ω</a></li>
+<li><a href="#32-gekoppelde-stator-en-rotorflux-in-het-dq-referentiestelsel-met-arbitraire-referentiehoeksnelheid">3.2 Gekoppelde stator- en rotorflux in het (d,q)-referentiestelsel met arbitraire referentiehoeksnelheid ω</a></li>
+<li><a href="#33-elektromechanisch-vermogen-en-koppel-in-het-dq-referentiestelsel-met-arbitraire-referentiehoeksnelheid">3.3 Elektromechanisch vermogen en koppel in het (d,q)-referentiestelsel met arbitraire referentiehoeksnelheid ω</a></li>
+</ul>
+</li>
+<li><a href="#4-dynamische-simulatie-van-de-directe-aanzet-van-een-inductiemotor">4. Dynamische simulatie van de directe aanzet van een inductiemotor</a></li>
+<li><a href="#5-het-principe-van-vectorregeling">5. Het principe van vectorregeling</a><ul>
+<li><a href="#51-verband-tussen-de-rotorflux-en-de-directe-component-van-de-statorstroom">5.1 Verband tussen de rotorflux en de directe component van de statorstroom</a></li>
+<li><a href="#52-verband-tussen-het-elektromechanisch-koppel-en-de-q-component-van-de-statorstroom">5.2 Verband tussen het elektromechanisch koppel en de q-component van de statorstroom</a></li>
+</ul>
+</li>
+<li><a href="#6-blokschema-van-de-vectorregelaar">6. Blokschema van de vectorregelaar</a></li>
+<li><a href="#7-dynamische-simulatie-van-de-aanzet-van-een-inductiemotor-mbv-directe-vectorregeling-softstart">7. Dynamische simulatie van de aanzet van een inductiemotor m.b.v. directe vectorregeling (softstart)</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+    
+
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <p>
+    <i class='far fa-copyright'></i> Tom Christiaens 2019 |
+    Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a>
+    from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+</p>
+    </div>
+
+</body>
+</html>
